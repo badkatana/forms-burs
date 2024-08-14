@@ -11,7 +11,6 @@ import {
   Button,
   IconButton,
   InputAdornment,
-  OutlinedInput,
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { IFormFields } from "../../interfaces/IFormFields";
@@ -32,12 +31,6 @@ export const FormGenerator = (props: FormGeneratorProps) => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
   return (
     <form onSubmit={handleSubmit(props.submitFunction)}>
       {props.fields.map((field) => {
@@ -49,17 +42,12 @@ export const FormGenerator = (props: FormGeneratorProps) => {
                 name={field.name}
                 control={control}
                 rules={field.validation}
-                render={({
-                  field: { onChange, onBlur, value, ref },
-                  fieldState,
-                }) => (
+                render={({ field: { onChange, value }, fieldState }) => (
                   <TextField
                     label={field.label}
                     type={field.type}
                     onChange={onChange}
-                    onBlur={onBlur}
                     value={value}
-                    inputRef={ref}
                     error={!!fieldState.error}
                     helperText={
                       fieldState.error ? fieldState.error.message : ""
@@ -79,15 +67,10 @@ export const FormGenerator = (props: FormGeneratorProps) => {
                   name={field.name}
                   control={control}
                   rules={field.validation}
-                  render={({
-                    field: { onChange, onBlur, value, ref },
-                    fieldState,
-                  }) => (
+                  render={({ field: { onChange, value }, fieldState }) => (
                     <Select
                       onChange={onChange}
-                      onBlur={onBlur}
-                      value={value || ""}
-                      inputRef={ref}
+                      value={value ?? field.options![0].value}
                       error={!!fieldState.error}
                     >
                       {field.options?.map((option) => (
@@ -146,11 +129,51 @@ export const FormGenerator = (props: FormGeneratorProps) => {
             );
           case "password":
             return (
-              <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">
-                  Password
-                </InputLabel>
-                <OutlinedInput
+              <Controller
+                key={field.name}
+                name={field.name}
+                control={control}
+                rules={field.validation}
+                render={({ field: { onChange, value }, fieldState }) => (
+                  <TextField
+                    label={field.label}
+                    onChange={onChange}
+                    value={value}
+                    type={showPassword ? "text" : "password"}
+                    error={!!fieldState.error}
+                    helperText={
+                      fieldState.error ? fieldState.error.message : ""
+                    }
+                    fullWidth
+                    margin="normal"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={handleClickShowPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                )}
+              />
+            );
+
+          default:
+            return null;
+        }
+      })}
+      <SubmitButton type="submit">Submit</SubmitButton>
+    </form>
+  );
+};
+
+{
+  /* <OutlinedInput
                   id="outlined-adornment-password"
                   type={showPassword ? "text" : "password"}
                   endAdornment={
@@ -165,16 +188,5 @@ export const FormGenerator = (props: FormGeneratorProps) => {
                       </IconButton>
                     </InputAdornment>
                   }
-                  label="Password"
-                />
-              </FormControl>
-            );
-
-          default:
-            return null;
-        }
-      })}
-      <SubmitButton type="submit">Submit</SubmitButton>
-    </form>
-  );
-};
+                  label="Password" */
+}

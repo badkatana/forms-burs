@@ -21,3 +21,5 @@ export const REGEXP_VALIDATION = [
     sequence: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/,
   },
 ];
+
+export const TEXT_REQUIRED = "This field is required";
