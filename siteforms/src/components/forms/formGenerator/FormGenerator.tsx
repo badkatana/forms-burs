@@ -61,7 +61,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
                 <Controller
                   name={field.name}
                   control={control}
-                  rules={field.validation} // Используем правила валидации
+                  rules={field.validation}
                   render={({
                     field: { onChange, onBlur, value, ref },
                     fieldState,
@@ -111,7 +111,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
                 <Controller
                   name={field.name}
                   control={control}
-                  rules={field.validation} // Используем правила валидации
+                  rules={field.validation}
                   render={({ field: { onChange, value } }) => (
                     <RadioGroup value={value} onChange={onChange}>
                       {field.options?.map((option) => (

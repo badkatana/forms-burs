@@ -1,21 +1,11 @@
-import { Box, Button, MenuItem, Select, TextField } from "@mui/material";
-import { useForm } from "react-hook-form";
-import { IUser } from "../../../interfaces/IUser";
-import {
-  GENDER_OPTIONS,
-  REGEXP_VALIDATION,
-} from "../../../constants/formsConstant";
-import { useId } from "react";
+import { GENDER_OPTIONS } from "../../../constants/formsConstant";
 import { FormGenerator } from "../formGenerator/FormGenerator";
 import { IFormFields } from "../../../interfaces/IFormFields";
+import { findValidationSequence } from "../lib/common";
 
 export const Auth = () => {
   const textError = "This field is required";
-  const id = useId();
 
-  function findValidationSequence(type: string) {
-    return REGEXP_VALIDATION.find((item) => item.type == "email")!.sequence;
-  }
   const fields: IFormFields[] = [
     {
       name: "name",
