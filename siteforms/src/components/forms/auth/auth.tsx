@@ -9,12 +9,11 @@ export const Auth = () => {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm<IUser>();
 
   const onSubmit = (data: IUser) => {
-    // here will be a mutation to check or register
+    // here will be a mutation to register a new user
     console.log(data);
   };
 
@@ -23,6 +22,7 @@ export const Auth = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
           label="Your Name"
+          key={"name"}
           defaultValue={""}
           {...register("name", {
             required: textError,
@@ -44,17 +44,21 @@ export const Auth = () => {
             required: textError,
           })}
           fullWidth
+          key={"gender"}
           defaultValue={GENDER_OPTIONS[0].label}
           placeholder="Choose your gender"
           error={!!errors.gender}
         >
           {GENDER_OPTIONS.map((gender) => (
-            <MenuItem value={gender.label}>{gender.label}</MenuItem>
+            <MenuItem value={gender.label} key={gender.label}>
+              {gender.label}
+            </MenuItem>
           ))}
         </Select>
 
         <TextField
           label="Phone number"
+          key={"number"}
           {...register("phoneNumber", {
             required: textError,
             pattern: {
