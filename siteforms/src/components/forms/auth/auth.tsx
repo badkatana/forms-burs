@@ -1,5 +1,5 @@
 import { GENDER_OPTIONS } from "../../../constants/formsConstant";
-import { FormGenerator } from "../formGenerator/FormGenerator";
+import { FormGenerator } from "../../formGenerator/FormGenerator";
 import { IFormFields } from "../../../interfaces/IFormFields";
 import { findValidationSequence } from "../lib/common";
 
