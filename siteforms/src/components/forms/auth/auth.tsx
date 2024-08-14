@@ -1,9 +1,7 @@
 import { Box, Button, MenuItem, Select, TextField } from "@mui/material";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { IUser } from "../../../interfaces/IUser";
-import { text } from "stream/consumers";
-import { useState } from "react";
-import { useCheckAuth } from "../../../hooks/useCheckAuth";
+import { GENDER_OPTIONS } from "../../../constants/formsConstant";
 
 export const Auth = () => {
   const textError = "This field is required";
@@ -11,11 +9,13 @@ export const Auth = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IUser>();
 
   const onSubmit = (data: IUser) => {
     // here will be a mutation to check or register
+    console.log(data);
   };
 
   return (
@@ -23,6 +23,7 @@ export const Auth = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
           label="Your Name"
+          defaultValue={""}
           {...register("name", {
             required: textError,
             pattern: {
@@ -43,11 +44,13 @@ export const Auth = () => {
             required: textError,
           })}
           fullWidth
+          defaultValue={GENDER_OPTIONS[0].label}
           placeholder="Choose your gender"
           error={!!errors.gender}
         >
-          <MenuItem value="male">Male</MenuItem>
-          <MenuItem value="female">Female</MenuItem>
+          {GENDER_OPTIONS.map((gender) => (
+            <MenuItem value={gender.label}>{gender.label}</MenuItem>
+          ))}
         </Select>
 
         <TextField
