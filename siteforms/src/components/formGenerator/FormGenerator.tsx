@@ -1,14 +1,11 @@
 import {
   TextField,
-  FormControl,
-  InputLabel,
   Select,
   MenuItem,
   FormControlLabel,
   Checkbox,
   RadioGroup,
   Radio,
-  Button,
   IconButton,
   InputAdornment,
 } from "@mui/material";
@@ -63,8 +60,8 @@ export const FormGenerator = (props: FormGeneratorProps) => {
 
           case "select":
             return (
-              <FormControl fullWidth margin="normal" key={field.name}>
-                <InputLabel>{field.label}</InputLabel>
+              <div>
+                <span>{field.label}</span>
                 <Controller
                   name={field.name}
                   control={control}
@@ -72,7 +69,8 @@ export const FormGenerator = (props: FormGeneratorProps) => {
                   render={({ field: { onChange, value }, fieldState }) => (
                     <Select
                       onChange={onChange}
-                      value={value ?? field.options![0].value}
+                      fullWidth
+                      value={value}
                       error={!!fieldState.error}
                     >
                       {field.options?.map((option) => (
@@ -83,7 +81,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
                     </Select>
                   )}
                 ></Controller>
-              </FormControl>
+              </div>
             );
 
           case "checkbox":
@@ -173,22 +171,3 @@ export const FormGenerator = (props: FormGeneratorProps) => {
     </form>
   );
 };
-
-{
-  /* <OutlinedInput
-                  id="outlined-adornment-password"
-                  type={showPassword ? "text" : "password"}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Password" */
-}

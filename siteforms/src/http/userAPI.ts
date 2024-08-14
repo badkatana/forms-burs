@@ -3,12 +3,12 @@ import { IUser } from "../interfaces/IUser";
 
 export const getUser = () => {};
 
-export const createUser = async (user: IUser) => {
-  const { data } = await $host.post("/new_user", user);
+export const getUsersStatistics = async () => {
+  const { data } = await $host.get("/users_statistics");
   return data;
 };
 
-export const createUser1 = async (newRole: IUser) => {
-  const { data } = await $host.post("/new_user", newRole);
+export const createUser = async (user: IUser) => {
+  const { data } = await $host.post("/new_user", user);
   return data;
 };

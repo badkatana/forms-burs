@@ -21,7 +21,7 @@ export const BackgroundText = styled("div")({
 
 export const BlurredContainer = styled(Box)({
   width: "50vh",
-  height: "50vh",
+  height: "70vh",
   padding: "1em",
   backgroundColor: "rgba(255, 255, 255, 0.4)",
   backdropFilter: "blur(10px)",

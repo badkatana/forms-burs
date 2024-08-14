@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 export const SubmitButton = styled(Button)({
   color: "#783b38",
   variant: "outlined",
+  border: "1px solid #783b38",
 });
 
 export const FormTitle = styled("h1")<{ stroke: boolean }>(({ stroke }) => ({

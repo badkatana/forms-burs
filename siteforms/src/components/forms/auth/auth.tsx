@@ -24,7 +24,7 @@ export const Auth = () => {
       name: data.name,
       gender: data.gender,
       phoneNumber: data.phoneNumber,
-      password: "1111",
+      password: data.password,
     };
     createNewUser(newUser);
   };
