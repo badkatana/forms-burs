@@ -1,9 +1,23 @@
 [
-  {
-    "id": "first012",
-    "name": "Sarrah",
-    "password": "simple",
-    "gender": "female",
-    "phone_number": "89232123342"
-  }
+    {
+        "id": "first012",
+        "name": "Sarrah",
+        "password": "simple",
+        "gender": "female",
+        "phone_number": "89232123342"
+    },
+    {
+        "id": ":r0:",
+        "name": "Maria Kandinsky",
+        "password": "1111",
+        "gender": "male",
+        "phoneNumber": "11111111111"
+    },
+    {
+        "id": ":r0:",
+        "name": "Maria Kandinsky",
+        "password": "1111",
+        "gender": "male",
+        "phoneNumber": "123123231213"
+    }
 ]

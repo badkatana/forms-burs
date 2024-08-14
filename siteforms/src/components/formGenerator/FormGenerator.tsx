@@ -9,10 +9,16 @@ import {
   RadioGroup,
   Radio,
   Button,
+  IconButton,
+  InputAdornment,
+  OutlinedInput,
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { IFormFields } from "../../interfaces/IFormFields";
 import { SubmitButton } from "./formGeneratorStyles";
+import { useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 type FormGeneratorProps = {
   submitFunction: (data: any) => void; // здесь any, потому как генератор форм должен быть максимально абстрактным
@@ -21,6 +27,16 @@ type FormGeneratorProps = {
 
 export const FormGenerator = (props: FormGeneratorProps) => {
   const { control, handleSubmit } = useForm();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
 
   return (
     <form onSubmit={handleSubmit(props.submitFunction)}>
@@ -127,6 +143,31 @@ export const FormGenerator = (props: FormGeneratorProps) => {
                   )}
                 />
               </div>
+            );
+          case "password":
+            return (
+              <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">
+                  Password
+                </InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={showPassword ? "text" : "password"}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password"
+                />
+              </FormControl>
             );
 
           default:

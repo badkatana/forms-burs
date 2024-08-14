@@ -6,7 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 
 app = FastAPI()
-origins = ["http://localhost:3000"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -22,7 +21,7 @@ class User(BaseModel):
     name: str
     password: str
     gender: str
-    phone_number: str
+    phoneNumber: str
 
 
 class News(BaseModel):
@@ -46,15 +45,16 @@ def load_json(file_path):
         return json.load(f)
 
 
-@app.post('/new_user')
+@app.post("/new_user")
 def create_user(user: User):
-
     users = load_json(USERS_FILE)
+    print(users)
     if user not in users:
-        users.append(user)
+        users.append(user.model_dump())
         save_json(USERS_FILE, users)
     else:
-        raise HTTPException(status_code=404, detail="Role not found")
+        raise HTTPException(status_code=409, detail="user was found")
+    return 'success'
 
 
-uvicorn.run(8000)
+uvicorn.run(app, port=8000)

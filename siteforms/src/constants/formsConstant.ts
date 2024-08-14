@@ -16,4 +16,8 @@ export const REGEXP_VALIDATION = [
     type: "name",
     sequence: /^[a-zA-Z\s]*$/,
   },
+  {
+    type: "password",
+    sequence: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/,
+  },
 ];
