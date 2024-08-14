@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { IFormFields } from "../../interfaces/IFormFields";
+import { SubmitButton } from "./formGeneratorStyles";
 
 type FormGeneratorProps = {
   submitFunction: (data: any) => void; // здесь any, потому как генератор форм должен быть максимально абстрактным
@@ -132,9 +133,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
             return null;
         }
       })}
-      <Button type="submit" variant="contained" color="primary">
-        Submit
-      </Button>
+      <SubmitButton type="submit">Submit</SubmitButton>
     </form>
   );
 };

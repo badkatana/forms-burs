@@ -2,6 +2,7 @@ import { GENDER_OPTIONS } from "../../../constants/formsConstant";
 import { FormGenerator } from "../../formGenerator/FormGenerator";
 import { IFormFields } from "../../../interfaces/IFormFields";
 import { findValidationSequence } from "../lib/common";
+import { IUser } from "../../../interfaces/IUser";
 
 export const Auth = () => {
   const textError = "This field is required";
@@ -42,7 +43,7 @@ export const Auth = () => {
     },
   ];
 
-  const handleSubmit = (data: any) => {
+  const handleSubmit = (data: IUser) => {
     console.log(data);
   };
 
