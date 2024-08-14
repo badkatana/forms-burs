@@ -1,92 +1,60 @@
 import { Box, Button, MenuItem, Select, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { IUser } from "../../../interfaces/IUser";
-import { GENDER_OPTIONS } from "../../../constants/formsConstant";
+import {
+  GENDER_OPTIONS,
+  REGEXP_VALIDATION,
+} from "../../../constants/formsConstant";
+import { useId } from "react";
+import { FormGenerator } from "../formGenerator/FormGenerator";
+import { IFormFields } from "../../../interfaces/IFormFields";
 
 export const Auth = () => {
   const textError = "This field is required";
+  const id = useId();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IUser>();
+  function findValidationSequence(type: string) {
+    return REGEXP_VALIDATION.find((item) => item.type == "email")!.sequence;
+  }
+  const fields: IFormFields[] = [
+    {
+      name: "name",
+      label: "Your name",
+      type: "text",
+      validation: {
+        required: textError,
+        pattern: {
+          value: findValidationSequence("name"),
+          message: "This does not look like a persons's name",
+        },
+      },
+    },
+    {
+      name: "phoneNumber",
+      label: "phone number",
+      type: "text",
+      validation: {
+        required: textError,
+        pattern: {
+          value: findValidationSequence("phoneNumber"),
+          message: "phone number contains 11 digits",
+        },
+      },
+    },
+    {
+      name: "gender",
+      label: "choose your gender",
+      type: "select",
+      options: GENDER_OPTIONS,
+      validation: {
+        required: textError,
+      },
+    },
+  ];
 
-  const onSubmit = (data: IUser) => {
-    // here will be a mutation to register a new user
+  const handleSubmit = (data: any) => {
     console.log(data);
   };
 
-  return (
-    <Box sx={{ width: "20%" }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          label="Your Name"
-          key={"name"}
-          defaultValue={""}
-          {...register("name", {
-            required: textError,
-            pattern: {
-              value: /^[a-zA-Z\s]*$/,
-              message: "It's not a name",
-            },
-          })}
-          error={!!errors.name}
-          helperText={errors.name?.message}
-          placeholder="Josif Maria zu Nitke"
-          fullWidth
-          margin="normal"
-        />
-
-        <Select
-          label="Gender"
-          {...register("gender", {
-            required: textError,
-          })}
-          fullWidth
-          key={"gender"}
-          defaultValue={GENDER_OPTIONS[0].label}
-          placeholder="Choose your gender"
-          error={!!errors.gender}
-        >
-          {GENDER_OPTIONS.map((gender) => (
-            <MenuItem value={gender.label} key={gender.label}>
-              {gender.label}
-            </MenuItem>
-          ))}
-        </Select>
-
-        <TextField
-          label="Phone number"
-          key={"number"}
-          {...register("phoneNumber", {
-            required: textError,
-            pattern: {
-              value: /^[0-9]{11}$/,
-              message: "Not correct phone number",
-            },
-          })}
-          error={!!errors.phoneNumber}
-          helperText={errors.phoneNumber?.message}
-          fullWidth
-          margin="normal"
-        />
-
-        <TextField
-          label="Password"
-          {...register("password", {
-            required: textError,
-          })}
-          error={!!errors.password}
-          helperText={errors.password?.message}
-          fullWidth
-          margin="normal"
-        />
-
-        <Button type="submit" variant="outlined" color="primary">
-          submit
-        </Button>
-      </form>
-    </Box>
-  );
+  return <FormGenerator fields={fields} submitFunction={handleSubmit} />;
 };

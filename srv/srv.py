@@ -18,7 +18,7 @@ app.add_middleware(
 
 
 class User(BaseModel):
-    id: int
+    id: str
     name: str
     password: str
     gender: str
@@ -26,14 +26,35 @@ class User(BaseModel):
 
 
 class News(BaseModel):
-    id: int
+    id: str
     title: str
     text: str
 
 
-USERS_FILE = "srv\users.json"
+USERS_FILE = "srv\\users.json"
 QUESTIONS_FILE = "srv\\questions.json"
 NEWS_FILE = "srv\\news.json"
+
+
+def save_json(file_path, data):
+    with open(file_path, 'w') as f:
+        json.dump(data, f, indent=4)
+
+
+def load_json(file_path):
+    with open(file_path, 'r') as f:
+        return json.load(f)
+
+
+@app.post('/new_user')
+def create_user(user: User):
+
+    users = load_json(USERS_FILE)
+    if user not in users:
+        users.append(user)
+        save_json(USERS_FILE, users)
+    else:
+        raise HTTPException(status_code=404, detail="Role not found")
 
 
 uvicorn.run(8000)
