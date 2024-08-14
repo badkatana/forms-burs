@@ -1,4 +1,4 @@
-import { AuthPage } from "../pages/authPage";
+import { RegistrationPage } from "../pages/registration/registrationPage";
 import { LoadingPage } from "../pages/loadingPage";
 import { NewsPage } from "../pages/newsPage";
 import { QuestionnairePage } from "../pages/questionnairePage";
@@ -16,8 +16,12 @@ export const authRoutes = [
 
 export const publicRoutes = [
   {
-    path: "/",
-    Component: AuthPage,
+    path: "/registration",
+    Component: RegistrationPage,
+  },
+  {
+    path: "/registration",
+    Component: RegistrationPage,
   },
   {
     path: "/401",

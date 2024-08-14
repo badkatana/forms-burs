@@ -29,5 +29,11 @@ export const Auth = () => {
     createNewUser(newUser);
   };
 
-  return <FormGenerator fields={authFields} submitFunction={handleSubmit} />;
+  return (
+    <FormGenerator
+      fields={authFields}
+      submitFunction={handleSubmit}
+      formTitle="Registration"
+    />
+  );
 };

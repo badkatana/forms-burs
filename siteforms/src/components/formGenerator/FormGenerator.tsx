@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { IFormFields } from "../../interfaces/IFormFields";
-import { SubmitButton } from "./formGeneratorStyles";
+import { FormTitle, SubmitButton } from "./formGeneratorStyles";
 import { useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -22,6 +22,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 type FormGeneratorProps = {
   submitFunction: (data: any) => void; // здесь any, потому как генератор форм должен быть максимально абстрактным
   fields: IFormFields[];
+  formTitle?: string;
 };
 
 export const FormGenerator = (props: FormGeneratorProps) => {
@@ -33,6 +34,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
 
   return (
     <form onSubmit={handleSubmit(props.submitFunction)}>
+      <FormTitle stroke>{props.formTitle}</FormTitle>
       {props.fields.map((field) => {
         switch (field.type) {
           case "text":
