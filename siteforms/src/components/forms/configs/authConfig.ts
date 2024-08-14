@@ -41,7 +41,7 @@ export const authFields: IFormFields[] = [
   {
     name: "password",
     label: "Enter a new password",
-    type: "text",
+    type: "password",
     validation: {
       required: textError,
       pattern: {
