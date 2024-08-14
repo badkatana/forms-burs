@@ -133,7 +133,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
         }
       })}
       <Button type="submit" variant="contained" color="primary">
-        Отправить
+        Submit
       </Button>
     </form>
   );
