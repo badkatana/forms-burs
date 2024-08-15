@@ -1,10 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { useCheckAuth } from "../hooks/useCheckAuth";
+import { useCheckUser } from "../hooks/useCheckUser";
 import { authRoutes, publicRoutes } from "./routes";
-import useRegisterUser from "../hooks/useRegisterUser";
 
 export const AppRouter = () => {
-  const { isUserLoggedIn } = useRegisterUser();
+  const { isUserLoggedIn } = useCheckUser();
 
   return (
     <Routes>

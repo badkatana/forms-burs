@@ -25,11 +25,7 @@ const useRegisterUser = () => {
     createNewUser(newUser);
   };
 
-  const isUserLoggedIn = () => {
-    return !!localStorage.getItem("user");
-  };
-
-  return { handleSubmit, isUserLoggedIn };
+  return { handleSubmit };
 };
 
 export default useRegisterUser;
