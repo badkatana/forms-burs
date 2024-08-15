@@ -19,7 +19,7 @@ type FormGeneratorProps = {
 };
 
 export const FormGenerator = (props: FormGeneratorProps) => {
-  const { control, handleSubmit, setValue, getValues } = useForm({
+  const { control, handleSubmit, setValue } = useForm({
     mode: "onChange",
   });
 

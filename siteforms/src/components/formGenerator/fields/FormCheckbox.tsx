@@ -1,13 +1,8 @@
 import { FormControlLabel, Checkbox } from "@mui/material";
-import { Control, FieldValues, Controller } from "react-hook-form";
-import { IFormFields } from "../../../interfaces/IFormFields";
+import { Controller } from "react-hook-form";
+import { FormFieldProps } from "../../../interfaces/IFormFields";
 
-type FormCheckboxProps = {
-  field: IFormFields;
-  control: Control<FieldValues>;
-};
-
-export const FormCheckbox = (props: FormCheckboxProps) => {
+export const FormCheckbox = (props: FormFieldProps) => {
   return (
     <Controller
       key={props.field.name}

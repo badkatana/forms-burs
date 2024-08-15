@@ -1,19 +1,9 @@
-import {
-  Control,
-  Controller,
-  FieldValues,
-  UseFormSetValue,
-} from "react-hook-form";
-import { IFormFields } from "../../../interfaces/IFormFields";
+import { Controller } from "react-hook-form";
+import { FormFieldProps } from "../../../interfaces/IFormFields";
 import { TextField } from "@mui/material";
+import { setFormValue } from "../../forms/lib/common";
 
-type FormTextProps = {
-  field: IFormFields;
-  control: Control<FieldValues>;
-  setValue: UseFormSetValue<FieldValues>;
-};
-
-export const FormText = (props: FormTextProps) => {
+export const FormText = (props: FormFieldProps) => {
   return (
     <div>
       <div>{props.field.label}</div>
@@ -26,7 +16,7 @@ export const FormText = (props: FormTextProps) => {
             type="text"
             onChange={(e) => {
               onChange(e);
-              props.setValue(`${props.field.name}`, e.target.value);
+              setFormValue(props.setValue!, e, props.field.name);
             }}
             onBlur={onBlur}
             value={value !== undefined ? value : ""}

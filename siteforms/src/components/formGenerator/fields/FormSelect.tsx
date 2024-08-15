@@ -1,13 +1,8 @@
-import { Control, Controller, FieldValues } from "react-hook-form";
-import { IFormFields } from "../../../interfaces/IFormFields";
+import { Controller } from "react-hook-form";
+import { FormFieldProps } from "../../../interfaces/IFormFields";
 import { MenuItem, Select } from "@mui/material";
 
-type FormSelectProps = {
-  field: IFormFields;
-  control: Control<FieldValues>;
-};
-
-export const FormSelect = (props: FormSelectProps) => {
+export const FormSelect = (props: FormFieldProps) => {
   return (
     <div>
       <span>{props.field.label}</span>

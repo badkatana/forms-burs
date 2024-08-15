@@ -1,13 +1,8 @@
 import { FormControlLabel, RadioGroup, Radio } from "@mui/material";
-import { Control, FieldValues, Controller } from "react-hook-form";
-import { IFormFields } from "../../../interfaces/IFormFields";
+import { Controller } from "react-hook-form";
+import { FormFieldProps } from "../../../interfaces/IFormFields";
 
-type FormRadioProps = {
-  field: IFormFields;
-  control: Control<FieldValues>;
-};
-
-export const FormRadio = (props: FormRadioProps) => {
+export const FormRadio = (props: FormFieldProps) => {
   return (
     <div key={props.field.name}>
       <span>{props.field.label}</span>

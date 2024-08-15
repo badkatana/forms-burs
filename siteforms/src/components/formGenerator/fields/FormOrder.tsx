@@ -1,20 +1,9 @@
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { useEffect, useState } from "react";
-import { IFormFields } from "../../../interfaces/IFormFields";
-import {
-  UseFormSetValue,
-  FieldValues,
-  UseFormGetValues,
-} from "react-hook-form";
+import { FormFieldProps } from "../../../interfaces/IFormFields";
 import { StyledDiv } from "./styles/FormOrderStyle";
 
-interface FormOrderProps {
-  field: IFormFields;
-  control: any;
-  setValue: UseFormSetValue<FieldValues>;
-}
-
-export const FormOrder = (props: FormOrderProps) => {
+export const FormOrder = (props: FormFieldProps) => {
   const { options } = props.field;
 
   const [currentOptions, setCurrentOptions] = useState(props.field.options!);
@@ -31,7 +20,7 @@ export const FormOrder = (props: FormOrderProps) => {
     reorderedOptions.splice(result.destination.index, 0, removed);
 
     setCurrentOptions(reorderedOptions);
-    props.setValue(props.field.name, reorderedOptions);
+    props.setValue && props.setValue(props.field.name, reorderedOptions);
   };
 
   return (

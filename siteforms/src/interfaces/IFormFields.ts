@@ -1,3 +1,5 @@
+import { UseFormSetValue, FieldValues } from "react-hook-form";
+
 export interface IFormFields {
   name: string;
   label: string;
@@ -19,3 +21,9 @@ export interface ValidationRules {
   required?: string;
   pattern?: { value: RegExp; message: string };
 }
+
+export type FormFieldProps = {
+  field: IFormFields;
+  control: any;
+  setValue?: UseFormSetValue<FieldValues>;
+};
