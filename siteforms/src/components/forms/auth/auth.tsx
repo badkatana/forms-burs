@@ -3,11 +3,12 @@ import { authFields } from "../configs/authConfig";
 import useRegisterUser from "../../../hooks/useRegisterUser";
 import { useCheckUser } from "../../../hooks/useCheckUser";
 import { Button } from "@mui/material";
-import { IUser } from "../../../interfaces/IUser";
 
 export const Auth = () => {
   const { handleSubmit } = useRegisterUser();
   const { isUserLoggedIn, getUserInfo, logOutUser } = useCheckUser();
+
+  // FIXME: перенести как отдельный компонент в том случае, если user уже вошёл. Не оставлять так
 
   return (
     <div>
