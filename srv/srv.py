@@ -55,7 +55,7 @@ def create_user(user: User):
     # else:
     users.append(user.model_dump())
     save_json(USERS_FILE, users)
-    return 'success'
+    return user
 
 
 @app.get("/users_statistics")
