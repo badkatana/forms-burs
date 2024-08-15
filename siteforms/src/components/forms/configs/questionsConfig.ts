@@ -62,17 +62,19 @@ export const questionsGirlFields: IFormFields[] = [
     type: "checkbox",
   },
   {
-    name: "news",
+    name: "meow",
     label: "Meow?",
     type: "switch",
   },
   {
     name: "options",
-    label: "options",
+    label: "Which traits are more important for you?",
     type: "drag",
     options: [
-      { label: "polina", value: "polina" },
-      { label: "sd", value: "sd" },
+      { label: "kindness", value: "kindness" },
+      { label: "optimism", value: "optimism" },
+      { label: "empathy", value: "empathy" },
+      { label: "commitment", value: "commitment" },
     ],
   },
 ];

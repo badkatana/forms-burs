@@ -16,12 +16,7 @@ export const FormSwitch = (props: FormSwitchProps) => {
         name={props.field.name}
         control={props.control}
         render={({ field: { onChange, value } }) => (
-          <Switch
-            defaultChecked
-            color="secondary"
-            value={value}
-            onChange={onChange}
-          />
+          <Switch color="secondary" checked={value} onChange={onChange} />
         )}
       />
     </div>

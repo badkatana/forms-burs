@@ -16,18 +16,21 @@ export const FormSelect = (props: FormSelectProps) => {
         control={props.control}
         rules={props.field.validation}
         render={({ field: { onChange, value }, fieldState }) => (
-          <Select
-            onChange={onChange}
-            fullWidth
-            value={value}
-            error={!!fieldState.error}
-          >
-            {props.field.options?.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </Select>
+          <div>
+            <Select
+              onChange={onChange}
+              fullWidth
+              value={value}
+              error={!!fieldState.error}
+            >
+              {props.field.options?.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </Select>
+            {fieldState.error ? fieldState.error.message : ""}
+          </div>
         )}
       />
     </div>

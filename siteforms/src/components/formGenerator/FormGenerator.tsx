@@ -19,7 +19,9 @@ type FormGeneratorProps = {
 };
 
 export const FormGenerator = (props: FormGeneratorProps) => {
-  const { control, handleSubmit, setValue, getValues } = useForm();
+  const { control, handleSubmit, setValue, getValues } = useForm({
+    mode: "onChange",
+  });
 
   return (
     <form onSubmit={handleSubmit(props.submitFunction)}>
@@ -27,7 +29,9 @@ export const FormGenerator = (props: FormGeneratorProps) => {
       {props.fields.map((field) => {
         switch (field.type) {
           case "text":
-            return <FormText field={field} control={control} />;
+            return (
+              <FormText setValue={setValue} field={field} control={control} />
+            );
 
           case "select":
             return <FormSelect field={field} control={control} />;
@@ -46,12 +50,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
 
           case "drag":
             return (
-              <FormOrder
-                field={field}
-                control={control}
-                setValue={setValue}
-                getValue={getValues}
-              />
+              <FormOrder field={field} control={control} setValue={setValue} />
             );
 
           default:

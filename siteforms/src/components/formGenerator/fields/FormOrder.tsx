@@ -1,12 +1,17 @@
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { useEffect, useState } from "react";
 import { IFormFields } from "../../../interfaces/IFormFields";
+import {
+  UseFormSetValue,
+  FieldValues,
+  UseFormGetValues,
+} from "react-hook-form";
+import { StyledDiv } from "./styles/FormOrderStyle";
 
 interface FormOrderProps {
   field: IFormFields;
   control: any;
-  setValue: (name: string, value: any) => void;
-  getValue: (name: string) => any;
+  setValue: UseFormSetValue<FieldValues>;
 }
 
 export const FormOrder = (props: FormOrderProps) => {
@@ -43,21 +48,13 @@ export const FormOrder = (props: FormOrderProps) => {
                   index={index}
                 >
                   {(provided) => (
-                    <li
+                    <StyledDiv
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      style={{
-                        ...provided.draggableProps.style,
-                        padding: "8px",
-                        margin: "4px",
-                        border: "1px solid #ccc",
-                        borderRadius: "4px",
-                        backgroundColor: "#fff",
-                      }}
                     >
                       {option.label}
-                    </li>
+                    </StyledDiv>
                   )}
                 </Draggable>
               ))}
