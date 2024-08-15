@@ -1,15 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
 import { Auth } from "../../components/forms/auth/auth";
-import { BackgroundText, BlurredContainer } from "./StylesRegistration";
+import {
+  BackgroundText,
+  BlurredContainer,
+  FlexBox,
+} from "./StylesRegistration";
 import { getUsersStatistics } from "../../http/userAPI";
 import { Box, FormControl } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export const RegistrationPage = () => {
-  const { data: UsersStatistics, error } = useQuery({
-    queryKey: ["usersCount"],
+  const {
+    data: UsersStatistics,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["usersStatistics"],
     queryFn: getUsersStatistics,
   });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Box>
@@ -18,17 +30,10 @@ export const RegistrationPage = () => {
           <FormControl>
             <Auth />
           </FormControl>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <FlexBox>
             <div>Already have an account?</div>
             <NavLink to={"/news"}>Login</NavLink>
-          </div>
+          </FlexBox>
         </BlurredContainer>
       </BackgroundText>
     </Box>

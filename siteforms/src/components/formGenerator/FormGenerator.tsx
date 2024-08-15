@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { IFormFields } from "../../interfaces/IFormFields";
-import { FormTitle, SubmitButton } from "./formGeneratorStyles";
+import { FormTitle } from "./formGeneratorStyles";
 import { FormText } from "./fields/FormText";
 import { FormSelect } from "./fields/FormSelect";
 import { FormCheckbox } from "./fields/FormCheckbox";
 import { FormRadio } from "./fields/FormRadio";
 import { FormPassword } from "./fields/FormPassword";
+import { FormGeneratorButtons } from "./FormGeneratorButtons";
 
 type FormGeneratorProps = {
   submitFunction: (data: any) => void; // здесь any, потому как генератор форм должен быть максимально абстрактным
@@ -40,7 +41,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
             return null;
         }
       })}
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <FormGeneratorButtons />
     </form>
   );
 };

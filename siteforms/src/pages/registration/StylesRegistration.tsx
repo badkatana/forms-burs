@@ -29,3 +29,10 @@ export const BlurredContainer = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
 });
+
+export const FlexBox = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+});
