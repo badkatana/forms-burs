@@ -1,20 +1,11 @@
-import {
-  TextField,
-  Select,
-  MenuItem,
-  FormControlLabel,
-  Checkbox,
-  RadioGroup,
-  Radio,
-  IconButton,
-  InputAdornment,
-} from "@mui/material";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { IFormFields } from "../../interfaces/IFormFields";
 import { FormTitle, SubmitButton } from "./formGeneratorStyles";
-import { useState } from "react";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { FormText } from "./fields/FormText";
+import { FormSelect } from "./fields/FormSelect";
+import { FormCheckbox } from "./fields/FormCheckbox";
+import { FormRadio } from "./fields/FormRadio";
+import { FormPassword } from "./fields/FormPassword";
 
 type FormGeneratorProps = {
   submitFunction: (data: any) => void; // здесь any, потому как генератор форм должен быть максимально абстрактным
@@ -25,143 +16,25 @@ type FormGeneratorProps = {
 export const FormGenerator = (props: FormGeneratorProps) => {
   const { control, handleSubmit } = useForm();
 
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   return (
     <form onSubmit={handleSubmit(props.submitFunction)}>
       <FormTitle stroke>{props.formTitle}</FormTitle>
       {props.fields.map((field) => {
         switch (field.type) {
           case "text":
-            return (
-              <Controller
-                key={field.name}
-                name={field.name}
-                control={control}
-                rules={field.validation}
-                render={({ field: { onChange, value }, fieldState }) => (
-                  <TextField
-                    label={field.label}
-                    type={field.type}
-                    onChange={onChange}
-                    value={value}
-                    error={!!fieldState.error}
-                    helperText={
-                      fieldState.error ? fieldState.error.message : ""
-                    }
-                    fullWidth
-                    margin="normal"
-                  />
-                )}
-              />
-            );
+            return <FormText field={field} control={control} />;
 
           case "select":
-            return (
-              <div>
-                <span>{field.label}</span>
-                <Controller
-                  name={field.name}
-                  control={control}
-                  rules={field.validation}
-                  render={({ field: { onChange, value }, fieldState }) => (
-                    <Select
-                      onChange={onChange}
-                      fullWidth
-                      value={value}
-                      error={!!fieldState.error}
-                    >
-                      {field.options?.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  )}
-                ></Controller>
-              </div>
-            );
+            return <FormSelect field={field} control={control} />;
 
           case "checkbox":
-            return (
-              <Controller
-                key={field.name}
-                name={field.name}
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={value}
-                        onChange={(e) => onChange(e.target.checked)}
-                      />
-                    }
-                    label={field.label}
-                  />
-                )}
-              />
-            );
+            return <FormCheckbox field={field} control={control} />;
 
           case "radio":
-            return (
-              <div key={field.name}>
-                <span>{field.label}</span>
-                <Controller
-                  name={field.name}
-                  control={control}
-                  rules={field.validation}
-                  render={({ field: { onChange, value } }) => (
-                    <RadioGroup value={value} onChange={onChange}>
-                      {field.options?.map((option) => (
-                        <FormControlLabel
-                          key={option.value}
-                          value={option.value}
-                          control={<Radio />}
-                          label={option.label}
-                        />
-                      ))}
-                    </RadioGroup>
-                  )}
-                />
-              </div>
-            );
+            return <FormRadio field={field} control={control} />;
+
           case "password":
-            return (
-              <Controller
-                key={field.name}
-                name={field.name}
-                control={control}
-                rules={field.validation}
-                render={({ field: { onChange, value }, fieldState }) => (
-                  <TextField
-                    label={field.label}
-                    onChange={onChange}
-                    value={value}
-                    type={showPassword ? "text" : "password"}
-                    error={!!fieldState.error}
-                    helperText={
-                      fieldState.error ? fieldState.error.message : ""
-                    }
-                    fullWidth
-                    margin="normal"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            onClick={handleClickShowPassword}
-                            edge="end"
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                )}
-              />
-            );
+            return <FormPassword field={field} control={control} />;
 
           default:
             return null;
