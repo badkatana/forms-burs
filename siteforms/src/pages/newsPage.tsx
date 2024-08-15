@@ -1,11 +1,14 @@
 import { NavBar } from "../components/navigation/Navbar";
-import { News } from "../components/news/news";
+import { NewsContainer } from "../components/news/NewsContainer";
+import { useCheckUser } from "../hooks/useCheckUser";
 
 export const NewsPage = () => {
+  const { getUserInfo } = useCheckUser();
   return (
     <div>
       <NavBar />
-      <News />
+      <div>Hi {getUserInfo().name}!</div>
+      <NewsContainer />
     </div>
   );
 };
