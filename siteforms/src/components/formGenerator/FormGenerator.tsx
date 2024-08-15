@@ -7,11 +7,13 @@ import { FormCheckbox } from "./fields/FormCheckbox";
 import { FormRadio } from "./fields/FormRadio";
 import { FormPassword } from "./fields/FormPassword";
 import { FormGeneratorButtons } from "./FormGeneratorButtons";
+import { IButtonProps } from "../../interfaces/iButtonGroup";
 
 type FormGeneratorProps = {
   submitFunction: (data: any) => void; // здесь any, потому как генератор форм должен быть максимально абстрактным
   fields: IFormFields[];
   formTitle?: string;
+  buttons?: IButtonProps[];
 };
 
 export const FormGenerator = (props: FormGeneratorProps) => {
@@ -41,7 +43,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
             return null;
         }
       })}
-      <FormGeneratorButtons />
+      <FormGeneratorButtons buttons={props.buttons} />
     </form>
   );
 };

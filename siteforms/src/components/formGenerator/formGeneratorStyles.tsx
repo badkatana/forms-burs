@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 export const SubmitButton = styled(Button)({
   color: "#783b38",
@@ -12,3 +12,10 @@ export const FormTitle = styled("h1")<{ stroke: boolean }>(({ stroke }) => ({
   textAlign: "center",
   color: stroke ? "transparent" : "#783b38",
 }));
+
+export const FormButtonsArea = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "flex-end",
+});

@@ -1,22 +1,16 @@
-import { Box, Button } from "@mui/material";
-import { CSSProperties } from "react";
-import { SubmitButton } from "./formGeneratorStyles";
-
-interface ButtonProps {
-  text: string;
-  link: string;
-  style?: CSSProperties;
-}
+import { Button } from "@mui/material";
+import { FormButtonsArea, SubmitButton } from "./formGeneratorStyles";
+import { IButtonProps } from "../../interfaces/iButtonGroup";
 
 type FormButtonsProps = {
-  buttons?: ButtonProps[];
+  buttons?: IButtonProps[];
 };
 
 export const FormGeneratorButtons = (props: FormButtonsProps) => {
   return (
-    <Box>
+    <FormButtonsArea>
       <SubmitButton type="submit">Submit</SubmitButton>
-      {props.buttons != null ??
+      {props.buttons &&
         props.buttons?.map((button, index) => (
           <Button
             key={index}
@@ -28,6 +22,6 @@ export const FormGeneratorButtons = (props: FormButtonsProps) => {
             {button.text}
           </Button>
         ))}
-    </Box>
+    </FormButtonsArea>
   );
 };
