@@ -6,15 +6,11 @@ import {
   FlexBox,
 } from "./StylesRegistration";
 import { getUsersStatistics } from "../../http/userAPI";
-import { Box, FormControl } from "@mui/material";
+import { Box, FormControl, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export const RegistrationPage = () => {
-  const {
-    data: UsersStatistics,
-    error,
-    isLoading,
-  } = useQuery({
+  const { data: usersStatistics, isLoading } = useQuery({
     queryKey: ["usersStatistics"],
     queryFn: getUsersStatistics,
   });
@@ -30,9 +26,17 @@ export const RegistrationPage = () => {
           <FormControl>
             <Auth />
           </FormControl>
-          <FlexBox>
+          <FlexBox direction>
             <div>Already have an account?</div>
             <NavLink to={"/news"}>Login</NavLink>
+          </FlexBox>
+          <FlexBox marginTop={"1em"}>
+            <Typography>
+              There are already {usersStatistics.user_count} registered users
+            </Typography>
+            <Typography>
+              And {usersStatistics.answered_users} replied to the questionnaire
+            </Typography>
           </FlexBox>
         </BlurredContainer>
       </BackgroundText>

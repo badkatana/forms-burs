@@ -17,7 +17,6 @@ app.add_middleware(
 
 
 class User(BaseModel):
-    id: str
     name: str
     password: str
     gender: str
@@ -32,6 +31,7 @@ class News(BaseModel):
 
 USERS_FILE = "srv\\users.json"
 QUESTIONS_FILE = "srv\\questions.json"
+USERS_QUESTIONS = "srv\\usersQuestions.json"
 NEWS_FILE = "srv\\news.json"
 
 
@@ -49,12 +49,22 @@ def load_json(file_path):
 def create_user(user: User):
     users = load_json(USERS_FILE)
     print(users)
-    if user not in users:
-        users.append(user.model_dump())
-        save_json(USERS_FILE, users)
-    else:
-        raise HTTPException(status_code=409, detail="user was found")
+
+    # if 1:
+    #     raise HTTPException(status_code=409, detail="user was found")
+    # else:
+    users.append(user.model_dump())
+    save_json(USERS_FILE, users)
     return 'success'
+
+
+@app.get("/users_statistics")
+def get_users_statistics():
+    answered_users = load_json(USERS_QUESTIONS)
+    users = load_json(USERS_FILE)
+    statistics = {"answered_users": len(
+        answered_users), "user_count": len(users)}
+    return statistics
 
 
 uvicorn.run(app, port=8000)
