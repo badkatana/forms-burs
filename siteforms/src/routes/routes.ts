@@ -24,7 +24,7 @@ export const publicRoutes = [
     Component: RegistrationPage,
   },
   {
-    path: "/401",
+    path: "/*",
     Component: LoadingPage,
   },
 ];
