@@ -8,6 +8,8 @@ import { FormRadio } from "./fields/FormRadio";
 import { FormPassword } from "./fields/FormPassword";
 import { FormGeneratorButtons } from "./FormGeneratorButtons";
 import { IButtonProps } from "../../interfaces/iButtonGroup";
+import { FormSwitch } from "./fields/FormSwitch";
+import { FormOrder } from "./fields/FormOrder";
 
 type FormGeneratorProps = {
   submitFunction: (data: any) => void; // здесь any, потому как генератор форм должен быть максимально абстрактным
@@ -17,7 +19,7 @@ type FormGeneratorProps = {
 };
 
 export const FormGenerator = (props: FormGeneratorProps) => {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, setValue, getValues } = useForm();
 
   return (
     <form onSubmit={handleSubmit(props.submitFunction)}>
@@ -38,6 +40,19 @@ export const FormGenerator = (props: FormGeneratorProps) => {
 
           case "password":
             return <FormPassword field={field} control={control} />;
+
+          case "switch":
+            return <FormSwitch field={field} control={control} />;
+
+          case "drag":
+            return (
+              <FormOrder
+                field={field}
+                control={control}
+                setValue={setValue}
+                getValue={getValues}
+              />
+            );
 
           default:
             return null;

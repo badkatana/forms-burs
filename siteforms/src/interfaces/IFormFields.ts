@@ -9,7 +9,8 @@ export interface IFormFields {
     | "password"
     | "upload"
     | "switch"
-    | "drag";
+    | "drag"
+    | "upload";
   options?: { label: string; value: string }[];
   validation?: ValidationRules;
 }
