@@ -12,6 +12,7 @@ export const SignIn = (props: { handleError: (error: any) => void }) => {
     props.handleError(signInError);
   }
 
+  //FIXME: it should not be here (isUserLogin)
   return (
     <div>
       {isUserLoggedIn() ? (

@@ -9,6 +9,7 @@ export const Auth = () => {
   const { isUserLoggedIn, getUserInfo, logOutUser } = useCheckUser();
 
   return (
+    //FIXME: it should not be here
     <div>
       {isUserLoggedIn() ? (
         <UserAuthCard name={getUserInfo().name} logOut={logOutUser} />
