@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { createUser, signInUser } from "../http/userAPI";
 import { IUser } from "../interfaces/IUser";
 
-const useRegisterUser = () => {
+export const useRegisterUser = () => {
   const navigator = useNavigate();
 
   const doOnSuccess = (data: IUser) => {
@@ -11,21 +11,25 @@ const useRegisterUser = () => {
     navigator("/news");
   };
 
-  const { mutate: createNewUser } = useMutation({
+  const { mutate: createNewUser, error } = useMutation({
     mutationFn: (newUser: IUser) => createUser(newUser),
     onSuccess: (data) => {
       doOnSuccess(data);
     },
-    onError: (error) => console.error(error),
+    onError: (error) => {
+      console.error(error);
+    },
   });
 
-  const { mutate: login } = useMutation({
+  const { mutate: login, error: signInError } = useMutation({
     mutationFn: (data: { userPass: string; userPhone: string }) =>
       signInUser(data.userPass, data.userPhone),
     onSuccess: (data) => {
       doOnSuccess(data);
     },
-    onError: (error) => console.error(error),
+    onError: (error) => {
+      console.error(error);
+    },
   });
 
   const handleSubmit = (data: IUser) => {
@@ -39,11 +43,13 @@ const useRegisterUser = () => {
   };
 
   const handleSignIn = (data: { phoneNumber: string; password: string }) => {
-    console.log(data.password);
     login({ userPass: data.password, userPhone: data.phoneNumber });
   };
 
-  return { handleSubmit, handleSignIn };
+  return {
+    handleSubmit,
+    handleSignIn,
+    registrationError: error,
+    signInError,
+  };
 };
-
-export default useRegisterUser;

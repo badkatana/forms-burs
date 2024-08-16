@@ -17,8 +17,8 @@ export const createUser = async (user: IUser) => {
 
 export const signInUser = async (userPass: string, userPhone: string) => {
   const params = new URLSearchParams();
-  params.append("phone_number", userPhone);
-  params.append("password", userPass);
+  params.append("userPhone", userPhone);
+  params.append("userPass", userPass);
   const { data } = await $host.get("/user/login", { params: params });
   return data;
 };

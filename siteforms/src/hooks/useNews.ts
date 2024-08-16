@@ -17,6 +17,7 @@ export function useNews() {
   //   refetchInterval: Infinity,
   // });
 
+  // FIXME: так на время разработки
   useEffect(() => {
     try {
       getNews(country).then((data) => setNews(data));
