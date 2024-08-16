@@ -8,7 +8,7 @@ import {
 
 export const NavBar = () => {
   return (
-    <StyledAppBar color="transparent" position="static">
+    <StyledAppBar color="transparent" position="sticky">
       <Toolbar style={{ width: "100%", justifyContent: "space-between" }}>
         <StyledLogoText>タスク</StyledLogoText>
         <StyledBox>

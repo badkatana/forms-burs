@@ -4,17 +4,15 @@ import { getNews } from "../http/newsAPI";
 import { INews } from "../interfaces/INews";
 
 export function useNews() {
-  const [country, setCountry] = useState<string>("us");
+  const [country, setCountry] = useState("us");
   const {
     data: news,
     isError: newsError,
     isLoading: newsLoading,
-  } = useQuery<INews | Error>({
+  } = useQuery<INews[]>({
     queryKey: ["news"],
     queryFn: () => getNews(country),
-    refetchInterval: Infinity,
   });
 
-  // FIXME enable censorship in this page
   return { country, setCountry, news, newsError, newsLoading };
 }

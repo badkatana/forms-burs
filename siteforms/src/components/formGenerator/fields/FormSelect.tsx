@@ -15,6 +15,7 @@ export const FormSelect = (props: FormFieldProps) => {
             <Select
               onChange={onChange}
               fullWidth
+              defaultValue={props.field.defaultValue}
               value={value}
               error={!!fieldState.error}
             >

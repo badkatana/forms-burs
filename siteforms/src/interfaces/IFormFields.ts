@@ -14,6 +14,7 @@ export interface IFormFields {
     | "drag"
     | "upload";
   options?: { label: string; value: string }[];
+  defaultValue?: string;
   validation?: ValidationRules;
 }
 
