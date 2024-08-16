@@ -5,6 +5,7 @@ import { useCheckUser } from "../hooks/useCheckUser";
 import { useNews } from "../hooks/useNews";
 
 // fixme: предусмотреть ошибку при загрузке новостей и выдавать в соотвествие с этим разные компоненты. Ок?
+// на время разработки закомментировано
 export const NewsPage = () => {
   const { getUserInfo } = useCheckUser();
   const { news, setCountry } = useNews();

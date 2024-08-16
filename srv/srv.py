@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List, Optional
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 import json
@@ -65,6 +64,21 @@ def get_users_statistics():
     statistics = {"answered_users": len(
         answered_users), "user_count": len(users)}
     return statistics
+
+
+@app.get("/user/login")
+def check_user_right(userPass: str, userPhone: str):
+    users = load_json(USERS_FILE)
+    user = next(filter(lambda obj: obj.get(
+        'phoneNumber') == userPhone, users), None)
+
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found.")
+
+    if user['password'] != userPass:
+        raise HTTPException(status_code=401, detail="Incorrect password.")
+
+    return user
 
 
 uvicorn.run(app, port=8000)

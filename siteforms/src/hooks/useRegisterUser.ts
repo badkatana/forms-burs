@@ -1,16 +1,29 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { createUser } from "../http/userAPI";
+import { createUser, signInUser } from "../http/userAPI";
 import { IUser } from "../interfaces/IUser";
 
 const useRegisterUser = () => {
   const navigator = useNavigate();
 
+  const doOnSuccess = (data: IUser) => {
+    localStorage.setItem("user", JSON.stringify(data));
+    navigator("/news");
+  };
+
   const { mutate: createNewUser } = useMutation({
     mutationFn: (newUser: IUser) => createUser(newUser),
     onSuccess: (data) => {
-      localStorage.setItem("user", JSON.stringify(data));
-      navigator("/news");
+      doOnSuccess(data);
+    },
+    onError: (error) => console.error(error),
+  });
+
+  const { mutate: login } = useMutation({
+    mutationFn: (data: { userPass: string; userPhone: string }) =>
+      signInUser(data.userPass, data.userPhone),
+    onSuccess: (data) => {
+      doOnSuccess(data);
     },
     onError: (error) => console.error(error),
   });
@@ -25,7 +38,12 @@ const useRegisterUser = () => {
     createNewUser(newUser);
   };
 
-  return { handleSubmit };
+  const handleSignIn = (data: { phoneNumber: string; password: string }) => {
+    console.log(data.password);
+    login({ userPass: data.password, userPhone: data.phoneNumber });
+  };
+
+  return { handleSubmit, handleSignIn };
 };
 
 export default useRegisterUser;

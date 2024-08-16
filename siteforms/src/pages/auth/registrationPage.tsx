@@ -6,7 +6,7 @@ import {
   FlexBox,
 } from "./StylesRegistration";
 import { getUsersStatistics } from "../../http/userAPI";
-import { Box, FormControl, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export const RegistrationPage = () => {
@@ -23,12 +23,10 @@ export const RegistrationPage = () => {
     <Box>
       <BackgroundText>
         <BlurredContainer>
-          <FormControl>
-            <Auth />
-          </FormControl>
+          <Auth />
           <FlexBox direction>
             <div>Already have an account?</div>
-            <NavLink to={"/news"}>Login</NavLink>
+            <NavLink to={"/signin"}>Sign In</NavLink>
           </FlexBox>
           <FlexBox marginTop={"1em"}>
             <Typography>
