@@ -6,7 +6,9 @@ import { StyledDiv } from "./styles/FormOrderStyle";
 export const FormOrder = (props: FormFieldProps) => {
   const { options } = props.field;
 
-  const [currentOptions, setCurrentOptions] = useState(props.field.options!);
+  const [currentOptions, setCurrentOptions] = useState(
+    props.field.options ? props.field.options : []
+  );
 
   useEffect(() => {
     setCurrentOptions(options!);

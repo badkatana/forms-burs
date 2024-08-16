@@ -1,6 +1,6 @@
 export const GENDER_OPTIONS = [
-  { label: "мужчина", value: "male" },
-  { label: "женщина", value: "female" },
+  { label: "male", value: "male" },
+  { label: "female", value: "female" },
 ];
 
 export const REGEXP_VALIDATION = [

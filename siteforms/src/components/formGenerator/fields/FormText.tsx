@@ -18,7 +18,6 @@ export const FormText = (props: FormFieldProps) => {
               onChange(e);
               setFormValue(props.setValue!, e, props.field.name);
             }}
-            onBlur={onBlur}
             value={value !== undefined ? value : ""}
             error={!!fieldState.error}
             helperText={fieldState.error ? fieldState.error.message : ""}
