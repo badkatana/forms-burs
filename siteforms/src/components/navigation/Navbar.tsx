@@ -7,6 +7,7 @@ import {
 } from "./NavbarStyles";
 
 export const NavBar = () => {
+  // FIXME: more information in navbar (user name, logout)
   return (
     <StyledAppBar color="transparent" position="sticky">
       <Toolbar style={{ width: "100%", justifyContent: "space-between" }}>

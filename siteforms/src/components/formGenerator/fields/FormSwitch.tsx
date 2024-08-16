@@ -1,13 +1,8 @@
 import { Control, Controller, FieldValues } from "react-hook-form";
-import { IFormFields } from "../../../interfaces/IFormFields";
+import { FormFieldProps, IFormFields } from "../../../interfaces/IFormFields";
 import { Switch } from "@mui/material";
 
-type FormSwitchProps = {
-  field: IFormFields;
-  control: Control<FieldValues>;
-};
-
-export const FormSwitch = (props: FormSwitchProps) => {
+export const FormSwitch = (props: FormFieldProps) => {
   return (
     <div>
       <div>{props.field.label}</div>

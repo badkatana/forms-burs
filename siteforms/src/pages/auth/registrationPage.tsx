@@ -10,6 +10,7 @@ import { Box, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export const RegistrationPage = () => {
+  // fixme : this should not be here
   const { data: usersStatistics, isLoading } = useQuery({
     queryKey: ["usersStatistics"],
     queryFn: getUsersStatistics,

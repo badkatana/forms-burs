@@ -13,7 +13,7 @@ export const FormOrder = (props: FormFieldProps) => {
   useEffect(() => {
     setCurrentOptions(options!);
   }, [options]);
-
+  // fixme: this should not be here
   const onDragEnd = (result: any) => {
     if (!result.destination) return;
 

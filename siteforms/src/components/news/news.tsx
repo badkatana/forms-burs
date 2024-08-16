@@ -2,6 +2,7 @@ import { Box, Link, Typography } from "@mui/material";
 import { INews } from "../../interfaces/INews";
 
 export const News = (props: { ne1: INews }) => {
+  // FIXME : all styles should be separeted
   return (
     <Box>
       <Typography
