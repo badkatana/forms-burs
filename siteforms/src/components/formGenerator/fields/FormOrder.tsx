@@ -1,6 +1,6 @@
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { useEffect, useState } from "react";
-import { FormFieldProps } from "../../../interfaces/IFormFields";
+import { FormFieldProps } from "interfaces/IFormFields";
 import { StyledDiv } from "./styles/FormOrderStyle";
 
 export const FormOrder = (props: FormFieldProps) => {

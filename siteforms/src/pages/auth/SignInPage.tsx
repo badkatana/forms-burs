@@ -5,9 +5,9 @@ import {
   BlurredContainer,
   FlexBox,
 } from "./StylesRegistration";
-import { SignIn } from "../../components/forms/auth/signIn";
-import useSnackbar from "../../hooks/useSnackbar";
-import CustomSnackbar from "../../components/notifications/CustomSnackbar";
+import { SignIn } from "components/forms/auth/signIn";
+import useSnackbar from "hooks/useSnackbar";
+import CustomSnackbar from "components/notifications/CustomSnackbar";
 
 export const SingInPage = () => {
   const { open, message, severity, handleAuthError } = useSnackbar();

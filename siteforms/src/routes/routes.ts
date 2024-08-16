@@ -1,8 +1,8 @@
-import { RegistrationPage } from "../pages/auth/registrationPage";
-import { SingInPage } from "../pages/auth/SignInPage";
-import { LoadingPage } from "../pages/loadingPage";
-import { NewsPage } from "../pages/newsPage";
-import { QuestionnairePage } from "../pages/questionnairePage";
+import { RegistrationPage } from "pages/auth/registrationPage";
+import { SingInPage } from "pages/auth/SignInPage";
+import { LoadingPage } from "pages/loadingPage";
+import { NewsPage } from "pages/newsPage";
+import { QuestionnairePage } from "pages/questionnairePage";
 
 export const authRoutes = [
   {

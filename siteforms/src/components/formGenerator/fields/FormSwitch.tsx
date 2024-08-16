@@ -1,5 +1,5 @@
-import { Control, Controller, FieldValues } from "react-hook-form";
-import { FormFieldProps, IFormFields } from "../../../interfaces/IFormFields";
+import { Controller } from "react-hook-form";
+import { FormFieldProps } from "interfaces/IFormFields";
 import { Switch } from "@mui/material";
 
 export const FormSwitch = (props: FormFieldProps) => {

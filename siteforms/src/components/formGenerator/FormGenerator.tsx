@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { IFormFields } from "../../interfaces/IFormFields";
+import { IFormFields } from "interfaces/IFormFields";
 import { FormTitle } from "./formGeneratorStyles";
 import { FormText } from "./fields/FormText";
 import { FormSelect } from "./fields/FormSelect";
@@ -7,7 +7,7 @@ import { FormCheckbox } from "./fields/FormCheckbox";
 import { FormRadio } from "./fields/FormRadio";
 import { FormPassword } from "./fields/FormPassword";
 import { FormGeneratorButtons } from "./FormGeneratorButtons";
-import { IButtonProps } from "../../interfaces/iButtonGroup";
+import { IButtonProps } from "interfaces/iButtonGroup";
 import { FormSwitch } from "./fields/FormSwitch";
 import { FormOrder } from "./fields/FormOrder";
 

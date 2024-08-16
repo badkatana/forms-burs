@@ -1,6 +1,6 @@
 import { InputAdornment, IconButton, TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
-import { FormFieldProps } from "../../../interfaces/IFormFields";
+import { FormFieldProps } from "interfaces/IFormFields";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { useState } from "react";
 

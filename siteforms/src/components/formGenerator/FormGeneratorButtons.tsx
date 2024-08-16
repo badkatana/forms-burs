@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { FormButtonsArea, SubmitButton } from "./formGeneratorStyles";
-import { IButtonProps } from "../../interfaces/iButtonGroup";
+import { IButtonProps } from "interfaces/iButtonGroup";
 
 type FormButtonsProps = {
   buttons?: IButtonProps[];

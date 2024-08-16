@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { getNews } from "../http/newsAPI";
-import { INews } from "../interfaces/INews";
+import { getNews } from "http/newsAPI";
+import { INews } from "interfaces/INews";
 
 export function useNews() {
   const [country, setCountry] = useState("us");

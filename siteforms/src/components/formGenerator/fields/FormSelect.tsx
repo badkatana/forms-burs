@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import { FormFieldProps } from "../../../interfaces/IFormFields";
+import { FormFieldProps } from "interfaces/IFormFields";
 import { MenuItem, Select } from "@mui/material";
 
 export const FormSelect = (props: FormFieldProps) => {

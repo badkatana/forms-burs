@@ -1,5 +1,5 @@
 import { $host } from ".";
-import { IUser } from "../interfaces/IUser";
+import { IUser } from "interfaces/IUser";
 
 export const getUser = () => {};
 

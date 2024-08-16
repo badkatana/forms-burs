@@ -1,7 +1,7 @@
 import { FormGenerator } from "../../formGenerator/FormGenerator";
 import { authFields } from "../configs/authConfig";
-import { useRegisterUser } from "../../../hooks/useRegisterUser";
-import { useCheckUser } from "../../../hooks/useCheckUser";
+import { useRegisterUser } from "hooks/useRegisterUser";
+import { useCheckUser } from "hooks/useCheckUser";
 import { UserAuthCard } from "../../user/userAuthCard";
 
 export const Auth = () => {

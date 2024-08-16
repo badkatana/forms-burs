@@ -1,5 +1,5 @@
 import { $newsHost } from ".";
-import { INews } from "../interfaces/INews";
+import { INews } from "interfaces/INews";
 
 export const getNews = async (country: string) => {
   const params = new URLSearchParams();

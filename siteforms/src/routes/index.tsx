@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useCheckUser } from "../hooks/useCheckUser";
+import { useCheckUser } from "hooks/useCheckUser";
 import { authRoutes, publicRoutes } from "./routes";
 
 export const AppRouter = () => {

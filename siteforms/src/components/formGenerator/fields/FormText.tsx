@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import { FormFieldProps } from "../../../interfaces/IFormFields";
+import { FormFieldProps } from "interfaces/IFormFields";
 import { TextField } from "@mui/material";
 import { setFormValue } from "../../forms/lib/common";
 
