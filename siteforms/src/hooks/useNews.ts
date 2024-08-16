@@ -1,18 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getNews } from "../http/newsAPI";
 import { INews } from "../interfaces/INews";
 
 export function useNews() {
   const [country, setCountry] = useState("us");
-  const {
-    data: news,
-    isError: newsError,
-    isLoading: newsLoading,
-  } = useQuery<INews[]>({
-    queryKey: ["news"],
-    queryFn: () => getNews(country),
-  });
+  const [news, setNews] = useState<INews[]>([]);
 
-  return { country, setCountry, news, newsError, newsLoading };
+  // const {
+  //   data: news1,
+  //   error: newsError,
+  //   isLoading: newsLoading,
+  // } = useQuery<INews[]>({
+  //   queryKey: ["news"],
+  //   queryFn: () => getNews(country),
+  //   refetchInterval: Infinity,
+  // });
+
+  useEffect(() => {
+    try {
+      getNews(country).then((data) => setNews(data));
+    } catch (e) {
+      console.log(e);
+    }
+  }, [country]);
+
+  return { country, setCountry, news };
 }

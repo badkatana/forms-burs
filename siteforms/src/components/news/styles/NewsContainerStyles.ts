@@ -6,5 +6,5 @@ export const StyledContainerNews = styled(Box)({
   display: "flex",
   margin: "auto",
   flexWrap: "wrap",
-  justifyContent: "center",
+  justifyContent: "flex-start",
 });
