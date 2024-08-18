@@ -1,4 +1,4 @@
-import { FormGenerator } from "../../formGenerator/FormGenerator";
+import { FormGenerator } from "components/formGenerator/FormGenerator";
 import { authFields } from "../configs/authConfig";
 import { useRegisterUser } from "hooks/useRegisterUser";
 import { useCheckUser } from "hooks/useCheckUser";

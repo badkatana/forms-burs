@@ -1,18 +1,13 @@
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import { useEffect, useState } from "react";
 import { FormFieldProps } from "interfaces/IFormFields";
 import { StyledDiv } from "./styles/FormOrderStyle";
 import { onDragEndItem } from "components/lib/dragEventHandler";
+import useOrderingOptions from "hooks/useOrderingOptions";
 
 export const FormOrder = (props: FormFieldProps) => {
   const { options } = props.field;
 
-  // this is to custom hook
-  const [currentOptions, setCurrentOptions] = useState(options ? options : []);
-
-  useEffect(() => {
-    options && setCurrentOptions(options);
-  }, [options]);
+  const { currentOptions, setCurrentOptions } = useOrderingOptions(options!);
 
   const onDragEndOption = (result: any) => {
     const reorderedOptions = onDragEndItem(result, currentOptions);

@@ -1,4 +1,4 @@
-import { FormGenerator } from "../formGenerator/FormGenerator";
+import { FormGenerator } from "components/formGenerator/FormGenerator";
 import { NewsFromCountry } from "../forms/configs/newsCountryConfig";
 
 export const NewsActions = (props: { setCountry: (value: string) => void }) => {

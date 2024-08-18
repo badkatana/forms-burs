@@ -77,4 +77,15 @@ export const questionsGirlFields: IFormFields[] = [
       { label: "commitment", value: "commitment" },
     ],
   },
+  {
+    name: "options2",
+    label: "What do you prefer doing in free time?",
+    type: "drag",
+    options: [
+      { label: "singing", value: "singing" },
+      { label: "gaming", value: "gaming" },
+      { label: "reading", value: "reading" },
+      { label: "walking", value: "walking" },
+    ],
+  },
 ];
