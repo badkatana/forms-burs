@@ -4,7 +4,7 @@ import { FormFieldProps } from "interfaces/IFormFields";
 
 export const FormRadio = (props: FormFieldProps) => {
   return (
-    <div key={props.field.name}>
+    <div>
       <span>{props.field.label}</span>
       <Controller
         name={props.field.name}

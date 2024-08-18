@@ -23,7 +23,6 @@ export const FormGenerator = (props: FormGeneratorProps) => {
     mode: "onChange",
   });
 
-  // fixme: all form... should have key here
   return (
     <form
       key={props.formTitle}
@@ -35,34 +34,54 @@ export const FormGenerator = (props: FormGeneratorProps) => {
         switch (field.type) {
           case "text":
             return (
-              <FormText setValue={setValue} field={field} control={control} />
+              <FormText
+                key={field.name}
+                setValue={setValue}
+                field={field}
+                control={control}
+              />
             );
 
           case "select":
-            return <FormSelect field={field} control={control} />;
+            return (
+              <FormSelect key={field.name} field={field} control={control} />
+            );
 
           case "checkbox":
-            return <FormCheckbox field={field} control={control} />;
+            return (
+              <FormCheckbox key={field.name} field={field} control={control} />
+            );
 
           case "radio":
-            return <FormRadio field={field} control={control} />;
+            return (
+              <FormRadio key={field.name} field={field} control={control} />
+            );
 
           case "password":
-            return <FormPassword field={field} control={control} />;
+            return (
+              <FormPassword key={field.name} field={field} control={control} />
+            );
 
           case "switch":
-            return <FormSwitch field={field} control={control} />;
+            return (
+              <FormSwitch key={field.name} field={field} control={control} />
+            );
 
           case "drag":
             return (
-              <FormOrder field={field} control={control} setValue={setValue} />
+              <FormOrder
+                key={field.name}
+                field={field}
+                control={control}
+                setValue={setValue}
+              />
             );
 
           default:
             return null;
         }
       })}
-      <FormGeneratorButtons buttons={props.buttons} />
+      <FormGeneratorButtons key={"formButtons"} buttons={props.buttons} />
     </form>
   );
 };

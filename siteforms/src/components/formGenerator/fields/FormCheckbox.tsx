@@ -5,7 +5,6 @@ import { FormFieldProps } from "interfaces/IFormFields";
 export const FormCheckbox = (props: FormFieldProps) => {
   return (
     <Controller
-      key={props.field.name}
       name={props.field.name}
       control={props.control}
       render={({ field: { onChange, value } }) => (

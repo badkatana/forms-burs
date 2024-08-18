@@ -7,7 +7,6 @@ export const FormSwitch = (props: FormFieldProps) => {
     <div>
       <div>{props.field.label}</div>
       <Controller
-        key={props.field.name}
         name={props.field.name}
         control={props.control}
         render={({ field: { onChange, value } }) => (

@@ -11,7 +11,6 @@ export const FormPassword = (props: FormFieldProps) => {
 
   return (
     <Controller
-      key={props.field.name}
       name={props.field.name}
       control={props.control}
       rules={props.field.validation}

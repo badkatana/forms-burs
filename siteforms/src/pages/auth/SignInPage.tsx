@@ -19,6 +19,7 @@ export const SingInPage = () => {
           <FormControl>
             <SignIn handleError={handleAuthError} />
           </FormControl>
+          {/* FIXME: to a navigation components*/}
           <FlexBox direction>
             <div>Want an account?</div>
             <NavLink to={"/registration"}>Create!</NavLink>
