@@ -2,33 +2,28 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { useEffect, useState } from "react";
 import { FormFieldProps } from "interfaces/IFormFields";
 import { StyledDiv } from "./styles/FormOrderStyle";
+import { onDragEndItem } from "components/lib/dragEventHandler";
 
 export const FormOrder = (props: FormFieldProps) => {
   const { options } = props.field;
 
-  const [currentOptions, setCurrentOptions] = useState(
-    props.field.options ? props.field.options : []
-  );
+  // this is to custom hook
+  const [currentOptions, setCurrentOptions] = useState(options ? options : []);
 
   useEffect(() => {
-    setCurrentOptions(options!);
+    options && setCurrentOptions(options);
   }, [options]);
-  // fixme: this should not be here
-  const onDragEnd = (result: any) => {
-    if (!result.destination) return;
 
-    const reorderedOptions = Array.from(currentOptions!);
-    const [removed] = reorderedOptions.splice(result.source.index, 1);
-    reorderedOptions.splice(result.destination.index, 0, removed);
-
-    setCurrentOptions(reorderedOptions);
+  const onDragEndOption = (result: any) => {
+    const reorderedOptions = onDragEndItem(result, currentOptions);
+    reorderedOptions && setCurrentOptions(reorderedOptions);
     props.setValue && props.setValue(props.field.name, reorderedOptions);
   };
 
   return (
     <div>
       <label>{props.field.label}</label>
-      <DragDropContext onDragEnd={onDragEnd}>
+      <DragDropContext onDragEnd={onDragEndOption}>
         <Droppable droppableId="droppable">
           {(provided) => (
             <ul ref={provided.innerRef} {...provided.droppableProps}>

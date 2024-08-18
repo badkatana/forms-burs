@@ -4,7 +4,7 @@ import {
   StyledBox,
   StyledButton,
   StyledLogoText,
-} from "./NavbarStyles";
+} from "./styles/NavbarStyles";
 
 export const NavBar = () => {
   // FIXME: more information in navbar (user name, logout)

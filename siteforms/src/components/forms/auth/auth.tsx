@@ -8,18 +8,15 @@ export const Auth = () => {
   const { handleSubmit } = useRegisterUser();
   const { isUserLoggedIn, getUserInfo, logOutUser } = useCheckUser();
 
+  if (isUserLoggedIn()) {
+    return <UserAuthCard name={getUserInfo().name} logOut={logOutUser} />;
+  }
+
   return (
-    //FIXME: it should not be here
-    <div>
-      {isUserLoggedIn() ? (
-        <UserAuthCard name={getUserInfo().name} logOut={logOutUser} />
-      ) : (
-        <FormGenerator
-          fields={authFields}
-          submitFunction={handleSubmit}
-          formTitle="Registration"
-        />
-      )}
-    </div>
+    <FormGenerator
+      fields={authFields}
+      submitFunction={handleSubmit}
+      formTitle="Registration"
+    />
   );
 };

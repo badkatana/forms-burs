@@ -11,7 +11,12 @@ export const FormSwitch = (props: FormFieldProps) => {
         name={props.field.name}
         control={props.control}
         render={({ field: { onChange, value } }) => (
-          <Switch color="secondary" checked={value} onChange={onChange} />
+          <Switch
+            aria-label={props.field.name}
+            color="secondary"
+            checked={value}
+            onChange={onChange}
+          />
         )}
       />
     </div>

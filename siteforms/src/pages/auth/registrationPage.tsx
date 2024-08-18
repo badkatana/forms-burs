@@ -1,23 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
 import { Auth } from "../../components/forms/auth/auth";
 import {
   BackgroundText,
   BlurredContainer,
   FlexBox,
 } from "./StylesRegistration";
-import { getUsersStatistics } from "../../http/userAPI";
 import { Box, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { useCheckUser } from "hooks/useCheckUser";
+import { LoadingPage } from "pages/loadingPage";
 
 export const RegistrationPage = () => {
-  // fixme : this should not be here
-  const { data: usersStatistics, isLoading } = useQuery({
-    queryKey: ["usersStatistics"],
-    queryFn: getUsersStatistics,
-  });
+  const { statsLoading, usersStatistics } = useCheckUser();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if (statsLoading) {
+    return <LoadingPage />;
   }
 
   return (
@@ -25,10 +21,12 @@ export const RegistrationPage = () => {
       <BackgroundText>
         <BlurredContainer>
           <Auth />
+          {/* FIXME: maybe this also must be a different place. TO NAVIGATION COMPONENTS  */}
           <FlexBox direction>
             <div>Already have an account?</div>
             <NavLink to={"/signin"}>Sign In</NavLink>
           </FlexBox>
+          {/* FIXME: this must be a component */}
           <FlexBox marginTop={"1em"}>
             <Typography>
               There are already {usersStatistics.user_count} registered users
@@ -37,6 +35,7 @@ export const RegistrationPage = () => {
               And {usersStatistics.answered_users} replied to the questionnaire
             </Typography>
           </FlexBox>
+          {/* FIXME: here also must be a custom snackbar */}
         </BlurredContainer>
       </BackgroundText>
     </Box>

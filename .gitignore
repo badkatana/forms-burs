@@ -1,3 +1,4 @@
 siteforms/node_modules
 srv/usersQuestions.json
 siteforms/.env
+siteforms/src/components/FormGenerator/__tests__

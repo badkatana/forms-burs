@@ -14,7 +14,7 @@ const CustomSnackbar: React.FC<SnackbarProps> = ({
   severity,
 }) => {
   return (
-    <Snackbar open={open} autoHideDuration={2000}>
+    <Snackbar open={open}>
       <Alert severity={severity}>{message}</Alert>
     </Snackbar>
   );

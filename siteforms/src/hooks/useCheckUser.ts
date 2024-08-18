@@ -1,5 +1,9 @@
+import { useQuery } from "@tanstack/react-query";
+import { getUsersStatistics } from "http/userAPI";
 import { IUser } from "interfaces/IUser";
 
+// this hook provides information for LOGGED user and statistics
+// FIXME: split in another hooks
 export const useCheckUser = () => {
   const isUserLoggedIn = () => {
     return !!localStorage.getItem("user");
@@ -13,5 +17,17 @@ export const useCheckUser = () => {
   const logOutUser = () => {
     return localStorage.clear();
   };
-  return { isUserLoggedIn, getUserInfo, logOutUser };
+
+  const { data: usersStatistics, isLoading } = useQuery({
+    queryKey: ["usersStatistics"],
+    queryFn: getUsersStatistics,
+  });
+
+  return {
+    isUserLoggedIn,
+    getUserInfo,
+    logOutUser,
+    usersStatistics,
+    statsLoading: isLoading,
+  };
 };

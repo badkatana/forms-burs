@@ -12,20 +12,15 @@ export const SignIn = (props: { handleError: (error: any) => void }) => {
     props.handleError(signInError);
   }
 
-  //FIXME: it should not be here (isUserLogin)
+  if (isUserLoggedIn()) {
+    return <UserAuthCard name={getUserInfo().name} logOut={logOutUser} />;
+  }
+
   return (
-    <div>
-      {isUserLoggedIn() ? (
-        <UserAuthCard name={getUserInfo().name} logOut={logOutUser} />
-      ) : (
-        <div>
-          <FormGenerator
-            fields={SignInConfig}
-            submitFunction={handleSignIn}
-            formTitle="Sing In"
-          />
-        </div>
-      )}
-    </div>
+    <FormGenerator
+      fields={SignInConfig}
+      submitFunction={handleSignIn}
+      formTitle="Sing In"
+    />
   );
 };

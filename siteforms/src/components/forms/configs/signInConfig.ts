@@ -1,6 +1,6 @@
+import { findValidationSequence } from "components/lib/validation";
 import { TEXT_REQUIRED } from "constants/formsConstant";
 import { IFormFields } from "interfaces/IFormFields";
-import { findValidationSequence } from "../lib/common";
 
 export const SignInConfig: IFormFields[] = [
   {

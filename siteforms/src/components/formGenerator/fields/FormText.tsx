@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
 import { FormFieldProps } from "interfaces/IFormFields";
 import { TextField } from "@mui/material";
-import { setFormValue } from "../../forms/lib/common";
+import { setFormValue } from "./lib/formLogic";
 
 export const FormText = (props: FormFieldProps) => {
   return (
@@ -13,6 +13,7 @@ export const FormText = (props: FormFieldProps) => {
         rules={props.field.validation}
         render={({ field: { onChange, onBlur, value }, fieldState }) => (
           <TextField
+            label={props.field.label}
             type="text"
             onChange={(e) => {
               onChange(e);

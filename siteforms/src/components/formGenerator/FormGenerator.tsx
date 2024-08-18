@@ -23,8 +23,13 @@ export const FormGenerator = (props: FormGeneratorProps) => {
     mode: "onChange",
   });
 
+  // fixme: all form... should have key here
   return (
-    <form onSubmit={handleSubmit(props.submitFunction)}>
+    <form
+      key={props.formTitle}
+      aria-label="form"
+      onSubmit={handleSubmit(props.submitFunction)}
+    >
       <FormTitle stroke>{props.formTitle}</FormTitle>
       {props.fields.map((field) => {
         switch (field.type) {
