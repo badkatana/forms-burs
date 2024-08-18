@@ -7,7 +7,7 @@ export function useNews() {
   const [news, setNews] = useState<INews[]>([]);
 
   const preparingNews = (data: INewsRaw) => {
-    const properNews: INews[] = data.articles.map((article: any) => ({
+    const properNews: INews[] = data.articles.map((article) => ({
       title: article.title,
       author: article.author,
       url: article.url,
