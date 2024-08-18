@@ -29,12 +29,3 @@ export const BlurredContainer = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
 });
-
-export const FlexBox = styled(Box)<{ direction?: boolean }>(
-  ({ direction }) => ({
-    display: "flex",
-    flexDirection: direction ? "row" : "column",
-    justifyContent: "center",
-    alignItems: "center",
-  })
-);

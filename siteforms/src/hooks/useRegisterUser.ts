@@ -12,7 +12,7 @@ export const useRegisterUser = () => {
     navigator("/news");
   };
 
-  const { mutate: createNewUser, error } = useMutation({
+  const { mutate: createNewUser, error: registrationError } = useMutation({
     mutationFn: (newUser: IUser) => createUser(newUser),
     onSuccess: (data) => {
       doOnSuccess(data);
@@ -50,7 +50,7 @@ export const useRegisterUser = () => {
   return {
     handleSubmit,
     handleSignIn,
-    registrationError: error,
+    registrationError,
     signInError,
   };
 };

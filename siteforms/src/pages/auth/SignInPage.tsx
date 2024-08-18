@@ -1,13 +1,9 @@
 import { Box, FormControl } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import {
-  BackgroundText,
-  BlurredContainer,
-  FlexBox,
-} from "./StylesRegistration";
+import { BackgroundText, BlurredContainer } from "./StylesRegistration";
 import { SignIn } from "components/forms/auth/signIn";
 import useSnackbar from "hooks/useSnackbar";
 import CustomSnackbar from "components/notifications/CustomSnackbar";
+import { AuthNav } from "components/navigation/authNav";
 
 export const SingInPage = () => {
   const { open, message, severity, handleAuthError } = useSnackbar();
@@ -19,11 +15,11 @@ export const SingInPage = () => {
           <FormControl>
             <SignIn handleError={handleAuthError} />
           </FormControl>
-          {/* FIXME: to a navigation components*/}
-          <FlexBox direction>
-            <div>Want an account?</div>
-            <NavLink to={"/registration"}>Create!</NavLink>
-          </FlexBox>
+          <AuthNav
+            linkNeeded="/registration"
+            linkText="Create!"
+            title="Want an account?"
+          />
         </BlurredContainer>
         <CustomSnackbar open={open} message={message} severity={severity} />
       </BackgroundText>
