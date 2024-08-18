@@ -1,14 +1,18 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useCheckUser } from "hooks/user/useCheckUser";
 
-export const UserAuthCard = (props: { name: string; logOut: () => void }) => {
+export const UserAuthCard = () => {
+  const { getUserInfo, logOutUser } = useCheckUser();
+  const userName = getUserInfo().name;
+
   return (
     <Box>
       <Typography>You already signed up as </Typography>
       <Typography fontWeight={"bold"} color={"#7853B3"}>
-        {props.name}
+        {userName}
       </Typography>
-      <IconButton onClick={() => props.logOut()}>
+      <IconButton onClick={() => logOutUser()}>
         <LogoutIcon />
       </IconButton>
     </Box>

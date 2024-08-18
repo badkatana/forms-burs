@@ -15,7 +15,7 @@ export const Auth = (props: {
   }
 
   if (isUserLoggedIn()) {
-    return <UserAuthCard name={getUserInfo().name} logOut={logOutUser} />;
+    return <UserAuthCard />;
   }
 
   return (

@@ -6,14 +6,14 @@ import { SignInConfig } from "../configs/signInConfig";
 
 export const SignIn = (props: { handleError: (error: any) => void }) => {
   const { handleSignIn, signInError } = useRegisterUser();
-  const { getUserInfo, logOutUser, isUserLoggedIn } = useCheckUser();
+  const { isUserLoggedIn } = useCheckUser();
 
   if (signInError !== null) {
     props.handleError(signInError);
   }
 
   if (isUserLoggedIn()) {
-    return <UserAuthCard name={getUserInfo().name} logOut={logOutUser} />;
+    return <UserAuthCard />;
   }
 
   return (
