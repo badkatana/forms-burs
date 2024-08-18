@@ -1,4 +1,4 @@
-import { FormGenerator } from "../../formGenerator/FormGenerator";
+import { FormGenerator } from "components/formGenerator/FormGenerator";
 import { questionsGirlFields } from "../configs/questionsConfig";
 
 export const Questionnaire = () => {

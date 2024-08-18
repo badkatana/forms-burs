@@ -1,8 +1,6 @@
 import { $host } from ".";
 import { IUser } from "interfaces/IUser";
 
-export const getUser = () => {};
-
 export const getUsersStatistics = async () => {
   const { data } = await $host.get("/users_statistics");
   return data;

@@ -7,6 +7,7 @@ type AuthNavProps = {
   linkText: string;
 };
 
+// fixme: renaming needed
 export const AuthNav = (props: AuthNavProps) => {
   const { title, linkNeeded, linkText } = props;
 
