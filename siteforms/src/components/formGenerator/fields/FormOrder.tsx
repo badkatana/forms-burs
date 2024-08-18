@@ -2,7 +2,7 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { FormFieldProps } from "interfaces/IFormFields";
 import { StyledDiv } from "./styles/FormOrderStyle";
 import { onDragEndItem } from "components/lib/dragEventHandler";
-import useOrderingOptions from "hooks/useOrderingOptions";
+import useOrderingOptions from "hooks/form/useOrderingOptions";
 
 export const FormOrder = (props: FormFieldProps) => {
   const { options } = props.field;

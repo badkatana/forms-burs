@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { createUser, signInUser } from "../http/userAPI";
+import { createUser, signInUser } from "../../http/userAPI";
 import { IUser } from "interfaces/IUser";
 
 // fixme: it should be two different hooks

@@ -1,5 +1,5 @@
-import { useCheckUser } from "hooks/useCheckUser";
-import { useRegisterUser } from "hooks/useRegisterUser";
+import { useCheckUser } from "hooks/user/useCheckUser";
+import { useRegisterUser } from "hooks/user/useRegisterUser";
 import { FormGenerator } from "components/formGenerator/FormGenerator";
 import { UserAuthCard } from "../../user/userAuthCard";
 import { SignInConfig } from "../configs/signInConfig";

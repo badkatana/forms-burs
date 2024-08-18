@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { useCheckUser } from "hooks/useCheckUser";
+import { useCheckUser } from "hooks/user/useCheckUser";
 import { LoadingPage } from "pages/loadingPage";
 
 export const UsersStatsBox = () => {

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useCheckUser } from "hooks/useCheckUser";
+import { useCheckUser } from "hooks/user/useCheckUser";
 import { authRoutes, publicRoutes } from "./routes";
 
 export const AppRouter = () => {
@@ -7,13 +7,13 @@ export const AppRouter = () => {
 
   return (
     <Routes>
-      {publicRoutes.map(({ path, Component }) => (
-        <Route path={path} element={Component()} />
-      ))}
       {isUserLoggedIn() &&
         authRoutes.map(({ path, Component }) => (
           <Route path={path} element={Component()} />
         ))}
+      {publicRoutes.map(({ path, Component }) => (
+        <Route path={path} element={Component()} />
+      ))}
     </Routes>
   );
 };
