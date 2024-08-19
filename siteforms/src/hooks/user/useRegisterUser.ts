@@ -1,18 +1,18 @@
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-import { createUser, signInUser } from "../../http/userAPI";
+import { createUser, signInUser } from "http/userAPI";
 import { IUser } from "interfaces/IUser";
 
 // fixme: it should be two different hooks
 export const useRegisterUser = () => {
-  const navigator = useNavigate();
-
   const doOnSuccess = (data: IUser) => {
     localStorage.setItem("user", JSON.stringify(data));
-    navigator("/news");
   };
 
-  const { mutate: createNewUser, error: registrationError } = useMutation({
+  const {
+    mutate: createNewUser,
+    error: registrationError,
+    isSuccess: registrationSuccess,
+  } = useMutation({
     mutationFn: (newUser: IUser) => createUser(newUser),
     onSuccess: (data) => {
       doOnSuccess(data);
@@ -22,7 +22,11 @@ export const useRegisterUser = () => {
     },
   });
 
-  const { mutate: login, error: signInError } = useMutation({
+  const {
+    mutate: login,
+    error: signInError,
+    isSuccess: loginSuccess,
+  } = useMutation({
     mutationFn: (data: { userPass: string; userPhone: string }) =>
       signInUser(data.userPass, data.userPhone),
     onSuccess: (data) => {
@@ -52,5 +56,7 @@ export const useRegisterUser = () => {
     handleSignIn,
     registrationError,
     signInError,
+    registrationSuccess,
+    loginSuccess,
   };
 };

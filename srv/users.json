@@ -3,7 +3,7 @@
         "name": "Sarrah",
         "password": "simple",
         "gender": "female",
-        "phone_number": "89232123342"
+        "phoneNumber": "89232123342"
     },
     {
         "name": "Maria Kandinsky",
@@ -14,13 +14,25 @@
     {
         "name": "Norton von Dorg",
         "password": "%1simple",
-        "gender": "male",
+        "gender": "female",
         "phoneNumber": "33333333333"
     },
     {
-        "name": "Norton von Dorg",
+        "name": "Sarrah",
+        "password": "%1SIMPLE",
+        "gender": "female",
+        "phoneNumber": "44444444444"
+    },
+    {
+        "name": "Polina Lanska",
         "password": "%1simple",
         "gender": "female",
-        "phoneNumber": "33333333333"
+        "phoneNumber": "55555555555"
+    },
+    {
+        "name": "Maria Kandinsky",
+        "password": "%1simple",
+        "gender": "male",
+        "phoneNumber": "66666666666"
     }
 ]

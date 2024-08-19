@@ -12,6 +12,7 @@ export const StyledAppBar = styled(AppBar)({
   display: "flex",
   flexDirection: "row",
   paddingLeft: "1em",
+  marginBottom: "1em",
 });
 
 export const StyledBox = styled(Box)({

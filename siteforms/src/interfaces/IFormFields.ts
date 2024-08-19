@@ -28,3 +28,8 @@ export type FormFieldProps = {
   control: any;
   setValue?: UseFormSetValue<FieldValues>;
 };
+
+export interface IAnswersQuestionnaire {
+  phoneNumber: string;
+  answers: any;
+}

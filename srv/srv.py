@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import uvicorn
@@ -28,6 +29,11 @@ class News(BaseModel):
     text: str
 
 
+class UsersQuestions(BaseModel):
+    phoneNumber: str
+    answers: Dict[str, Any]
+
+
 USERS_FILE = "srv\\users.json"
 QUESTIONS_FILE = "srv\\questions.json"
 USERS_QUESTIONS = "srv\\usersQuestions.json"
@@ -47,14 +53,15 @@ def load_json(file_path):
 @app.post("/new_user")
 def create_user(user: User):
     users = load_json(USERS_FILE)
-    print(users)
 
-    # if 1:
-    #     raise HTTPException(status_code=409, detail="user was found")
-    # else:
-    users.append(user.model_dump())
-    save_json(USERS_FILE, users)
-    return user
+    print(users)
+    if any(usr["phoneNumber"] == user.phoneNumber for usr in users):
+        raise HTTPException(
+            status_code=400, detail="Phone number already exists.")
+    else:
+        users.append(user.model_dump())
+        save_json(USERS_FILE, users)
+        return user
 
 
 @app.get("/users_statistics")
@@ -79,6 +86,30 @@ def check_user_right(userPass: str, userPhone: str):
         raise HTTPException(status_code=401, detail="Incorrect password.")
 
     return user
+
+
+@app.get("/check/{phone_number}")
+def check_user(phone_number: str):
+    UsersQuestions = load_json(USERS_QUESTIONS)
+    for user in UsersQuestions:
+        if user["phoneNumber"] == phone_number:
+            return {"exists": True, "answers": user["answers"]}
+    return {"exists": False}
+
+
+@app.post("/save/")
+def save_answers(user_answers: UsersQuestions):
+    usersQuestions = load_json(USERS_QUESTIONS)
+
+    for user in usersQuestions:
+        if user["phoneNumber"] == user_answers.phoneNumber:
+            user["answers"] = user_answers.answers
+            save_json(USERS_QUESTIONS, usersQuestions)
+            return {"message": "Answers updated successfully."}
+
+    usersQuestions.append(user_answers.model_dump())
+    save_json(USERS_QUESTIONS, usersQuestions)
+    return {"message": "User answers saved successfully."}
 
 
 uvicorn.run(app, port=8000)

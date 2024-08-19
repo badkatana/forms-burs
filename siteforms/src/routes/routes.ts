@@ -1,3 +1,4 @@
+import { NotFoundPage } from "pages/404";
 import { RegistrationPage } from "pages/auth/registrationPage";
 import { SingInPage } from "pages/auth/SignInPage";
 import { LoadingPage } from "pages/loadingPage";
@@ -26,6 +27,6 @@ export const publicRoutes = [
   },
   {
     path: "/*",
-    Component: LoadingPage,
+    Component: NotFoundPage,
   },
 ];

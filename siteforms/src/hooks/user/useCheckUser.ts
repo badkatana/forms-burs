@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getUsersStatistics } from "http/userAPI";
+import { checkUserQuestionnaire, getUsersStatistics } from "http/userAPI";
 import { IUser } from "interfaces/IUser";
 
 // this hook provides information for LOGGED user and statistics
 // FIXME: split in another hooks
+
 export const useCheckUser = () => {
   const isUserLoggedIn = () => {
     return !!localStorage.getItem("user");
@@ -13,6 +14,14 @@ export const useCheckUser = () => {
     const currentUser = localStorage.getItem("user");
     return JSON.parse(currentUser!) as IUser;
   };
+
+  const phoneNumber = getUserInfo() == null ? "" : getUserInfo().phoneNumber;
+
+  const { data: isUserAnswered, isLoading: AnsweringLoading } = useQuery({
+    queryKey: ["userAnswers", phoneNumber],
+    enabled: !!phoneNumber,
+    queryFn: () => checkUserQuestionnaire(phoneNumber),
+  });
 
   const logOutUser = () => {
     return localStorage.clear();
@@ -29,5 +38,7 @@ export const useCheckUser = () => {
     logOutUser,
     usersStatistics,
     statsLoading: isLoading,
+    isUserAnswered,
+    AnsweringLoading,
   };
 };

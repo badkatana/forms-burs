@@ -1,14 +1,10 @@
-import { Box, Toolbar } from "@mui/material";
-import {
-  StyledAppBar,
-  StyledBox,
-  StyledButton,
-  StyledLogoText,
-} from "./styles/NavbarStyles";
+import { Box, IconButton, Toolbar } from "@mui/material";
+import { StyledAppBar, StyledBox, StyledLogoText } from "./styles/NavbarStyles";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useCheckUser } from "hooks/user/useCheckUser";
 
 export const NavBar = () => {
-  const { getUserInfo } = useCheckUser();
+  const { getUserInfo, logOutUser } = useCheckUser();
   const userName = getUserInfo().name;
   // FIXME: more information in navbar (user name, logout)
   return (
@@ -17,8 +13,9 @@ export const NavBar = () => {
         <StyledLogoText>タスク</StyledLogoText>
         <StyledBox>
           <Box>{userName}</Box>
-          {/* FIXME: this shold not be here */}
-          <StyledButton href="/questionnaire">Questionnaire</StyledButton>
+          <IconButton onClick={() => logOutUser()}>
+            <LogoutIcon />
+          </IconButton>
         </StyledBox>
       </Toolbar>
     </StyledAppBar>
