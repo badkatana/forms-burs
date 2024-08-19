@@ -7,9 +7,9 @@ export interface IFormFields {
     | "text"
     | "select"
     | "checkbox"
+    | "checkbox group"
     | "radio"
     | "password"
-    | "upload"
     | "switch"
     | "drag"
     | "upload";
