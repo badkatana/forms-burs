@@ -12,3 +12,9 @@ export const SearchNews = styled(Box)({
   justifyContent: "flex-end",
   marginRight: "5%",
 });
+
+export const ContainerSt = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+});

@@ -17,7 +17,9 @@ export const NavBar = () => {
   return (
     <StyledAppBar color="transparent" position="sticky">
       <Toolbar style={{ width: "100%", justifyContent: "space-between" }}>
-        <StyledLogoText>タスク</StyledLogoText>
+        <StyledLogoText onClick={() => navigate("/news")}>
+          タスク
+        </StyledLogoText>
         <StyledBox>
           <Box>{userName}</Box>
           <IconButton onClick={() => handleLogOutClick()}>

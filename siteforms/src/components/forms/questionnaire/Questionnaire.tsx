@@ -11,7 +11,7 @@ import {
 } from "components/lib/imagesToServer";
 
 export const Questionnaire = () => {
-  const { getUserInfo } = useCheckUser();
+  const { getUserInfo, isUserAnswered } = useCheckUser();
 
   const submit = (data: any) => {
     saveImage(data);
@@ -27,6 +27,10 @@ export const Questionnaire = () => {
     const formData = getImagesAsFormData(images, "images", data);
     saveUserImages(formData);
   };
+
+  if (isUserAnswered) {
+    return <div>You already done that</div>;
+  }
 
   return <FormGenerator fields={questionsGirlFields} submitFunction={submit} />;
 };

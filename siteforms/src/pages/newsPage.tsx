@@ -5,7 +5,11 @@ import { useCheckUser } from "hooks/user/useCheckUser";
 import { useNews } from "hooks/news/useNews";
 import { LoadingPage } from "./loadingPage";
 import { UserSuggestion } from "components/user/UserSuggestion";
-import { SearchNews, SearchWrapper } from "./styles/NewsPageStyles";
+import {
+  ContainerSt,
+  SearchNews,
+  SearchWrapper,
+} from "./styles/NewsPageStyles";
 
 export const NewsPage = () => {
   const { AnsweringLoading, isUserAnswered } = useCheckUser();
@@ -18,13 +22,7 @@ export const NewsPage = () => {
   return (
     <div>
       <NavBar />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
+      <ContainerSt>
         <UserSuggestion suggestion={isUserAnswered.exists} />
         <SearchNews>
           <SearchWrapper>
@@ -32,7 +30,7 @@ export const NewsPage = () => {
           </SearchWrapper>
         </SearchNews>
         <NewsContainer currentNews={news} />
-      </div>
+      </ContainerSt>
     </div>
   );
 };

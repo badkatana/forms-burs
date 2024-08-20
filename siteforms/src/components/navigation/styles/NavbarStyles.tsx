@@ -3,6 +3,7 @@ import { AppBar, Box, Button } from "@mui/material";
 
 export const StyledLogoText = styled(Box)({
   fontSize: "2rem",
+  cursor: "pointer",
   color: "transparent",
   WebkitTextStroke: "1px #783b38",
 });
