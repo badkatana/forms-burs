@@ -1,5 +1,4 @@
-import { Box, Typography } from "@mui/material";
-import { FlexBox } from "components/navigation/styles/authNav";
+import { Typography } from "@mui/material";
 import { useCheckUser } from "hooks/user/useCheckUser";
 import { LoadingPage } from "pages/loadingPage";
 import { StatContainer } from "./styles/UserSuggestionStyles";

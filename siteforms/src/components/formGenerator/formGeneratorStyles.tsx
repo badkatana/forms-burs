@@ -19,3 +19,10 @@ export const FormButtonsArea = styled(Box)({
   alignItems: "center",
   justifyContent: "flex-end",
 });
+
+export const FormStyled = styled("form")({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  rowGap: "1em",
+});

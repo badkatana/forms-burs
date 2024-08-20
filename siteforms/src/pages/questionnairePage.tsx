@@ -1,19 +1,19 @@
-import { Box, Typography } from "@mui/material";
 import { Questionnaire } from "components/forms/questionnaire/Questionnaire";
 import { NavBar } from "components/navigation/Navbar";
 import {
   StyledContainer,
   StyledFormContainer,
+  TypographyHeader,
+  TypographySmall,
 } from "./styles/StylesQuestionnairePage";
-import { useCheckUser } from "hooks/user/useCheckUser";
 
 export const QuestionnairePage = () => {
   return (
     <div>
       <NavBar />
       <StyledContainer>
-        <Typography>Hi! This is our questionnaire</Typography>
-        <Typography>Please be honest in your answers</Typography>
+        <TypographyHeader>This is our questionnaire</TypographyHeader>
+        <TypographySmall>Please be honest in your answers</TypographySmall>
         <StyledFormContainer>
           <Questionnaire />
         </StyledFormContainer>

@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { IFormFields } from "interfaces/IFormFields";
-import { FormTitle } from "./formGeneratorStyles";
+import { FormStyled, FormTitle } from "./formGeneratorStyles";
 import { FormText } from "./fields/FormText";
 import { FormSelect } from "./fields/FormSelect";
 import { FormCheckbox } from "./fields/FormCheckbox";
@@ -27,7 +27,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
 
   return (
     <FormProvider {...methods}>
-      <form
+      <FormStyled
         key={props.formTitle}
         aria-label="form"
         onSubmit={methods.handleSubmit(props.submitFunction)}
@@ -66,7 +66,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
           }
         })}
         <FormGeneratorButtons key={"formButtons"} buttons={props.buttons} />
-      </form>
+      </FormStyled>
     </FormProvider>
   );
 };
