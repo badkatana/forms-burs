@@ -56,7 +56,7 @@ export const FormGenerator = (props: FormGeneratorProps) => {
               return <FormOrder key={field.name} {...field} />;
 
             case "upload":
-              return <FormUpload {...field} />;
+              return <FormUpload key={field.name} {...field} />;
 
             default:
               return null;

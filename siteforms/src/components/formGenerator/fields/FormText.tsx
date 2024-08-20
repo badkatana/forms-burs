@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 
 export const FormText = (props: IFormFields) => {
   const { control, setValue } = useFormContext();
-  const { options, name, label, validation } = props;
+  const { name, label, validation } = props;
 
   return (
     <div>

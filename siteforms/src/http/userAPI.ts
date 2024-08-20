@@ -1,4 +1,3 @@
-import { IAnswersQuestionnaire } from "interfaces/IFormFields";
 import { $host } from ".";
 import { IUser } from "interfaces/IUser";
 
@@ -22,14 +21,12 @@ export const signInUser = async (userPass: string, userPhone: string) => {
   return data;
 };
 
-export const checkUserQuestionnaire = async (phoneNumber: string) => {
-  const { data } = await $host.get(`/check/${phoneNumber}`);
-  return data;
-};
+export const saveUserImages = async (formData: FormData) => {
+  const { data } = await $host.post("/api/save/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 
-export const saveUserQuestionnaire = async (
-  user_answers: IAnswersQuestionnaire
-) => {
-  const { data } = await $host.post("/save/", user_answers);
   return data;
 };

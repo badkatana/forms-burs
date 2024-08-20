@@ -1,25 +1,31 @@
 import { FormGenerator } from "components/formGenerator/FormGenerator";
 import { questionsGirlFields } from "../configs/questionsConfig";
 import { IAnswersQuestionnaire } from "interfaces/IFormFields";
-import { saveUserQuestionnaire } from "http/userAPI";
+import { saveUserQuestionnaire } from "http/questionnaireApi";
 import { useCheckUser } from "hooks/user/useCheckUser";
+import { saveUserImages } from "http/userAPI";
+import {
+  getAllFieldsWithImages,
+  getImagesAsFormData,
+  replaceFilesWithNames,
+} from "components/lib/imagesToServer";
 
 export const Questionnaire = () => {
-  // fixme: send images to server
-
   const { getUserInfo } = useCheckUser();
 
   const submit = (data: any) => {
-    const data1: IAnswersQuestionnaire = {
+    saveImage(data);
+    const userAnswers: IAnswersQuestionnaire = {
       phoneNumber: getUserInfo().phoneNumber,
-      answers: data,
+      answers: replaceFilesWithNames(data),
     };
-    saveImage(data1.answers);
-    saveUserQuestionnaire(data1);
+    saveUserQuestionnaire(userAnswers);
   };
 
-  const saveImage = (data: IAnswersQuestionnaire) => {
-    Object.keys(data);
+  const saveImage = async (data: IAnswersQuestionnaire) => {
+    const images = getAllFieldsWithImages(questionsGirlFields);
+    const formData = getImagesAsFormData(images, "images", data);
+    saveUserImages(formData);
   };
 
   return <FormGenerator fields={questionsGirlFields} submitFunction={submit} />;

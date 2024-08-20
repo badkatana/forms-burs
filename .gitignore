@@ -1,4 +1,5 @@
 siteforms/node_modules
-srv/usersQuestions.json
 siteforms/.env
-siteforms/src/components/FormGenerator/__tests__
+srv/user_images
+srv/usersQuestions.json
+siteforms/src/components/formGenerator/__tests__

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { checkUserQuestionnaire, getUsersStatistics } from "http/userAPI";
+import { checkUserQuestionnaire } from "http/questionnaireApi";
+import { getUsersStatistics } from "http/userAPI";
 import { IUser } from "interfaces/IUser";
 
 // this hook provides information for LOGGED user and statistics

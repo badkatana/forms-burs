@@ -1,5 +1,5 @@
 import { Box, FormControl } from "@mui/material";
-import { BackgroundText, BlurredContainer } from "./StylesRegistration";
+import { BackgroundText, BlurredContainer } from "../styles/StylesRegistration";
 import { SignIn } from "components/forms/auth/signIn";
 import useSnackbar from "hooks/notifications/useSnackbar";
 import CustomSnackbar from "components/notifications/CustomSnackbar";

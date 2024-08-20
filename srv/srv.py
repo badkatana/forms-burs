@@ -4,6 +4,11 @@ from pydantic import BaseModel
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 import json
+from fastapi import FastAPI, UploadFile, File, Form
+from fastapi.responses import JSONResponse
+import os
+from pydantic import BaseModel
+from typing import Dict, Any
 
 app = FastAPI()
 
@@ -35,9 +40,8 @@ class UsersQuestions(BaseModel):
 
 
 USERS_FILE = "srv\\users.json"
-QUESTIONS_FILE = "srv\\questions.json"
 USERS_QUESTIONS = "srv\\usersQuestions.json"
-NEWS_FILE = "srv\\news.json"
+IMAGE_DIRECTORY = "srv\\user_images"
 
 
 def save_json(file_path, data):
@@ -111,5 +115,14 @@ def save_answers(user_answers: UsersQuestions):
     save_json(USERS_QUESTIONS, usersQuestions)
     return {"message": "User answers saved successfully."}
 
+
+@app.post("/api/save")
+async def save_answers(
+        images: List[UploadFile] = File(...)):
+    for image in images:
+        image_path = os.path.join(IMAGE_DIRECTORY, image.filename)
+        with open(image_path, "wb") as buffer:
+            buffer.write(await image.read())
+    return JSONResponse(content={"message": "images were saved successfully"})
 
 uvicorn.run(app, port=8000)

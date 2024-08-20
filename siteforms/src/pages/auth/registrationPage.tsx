@@ -1,5 +1,5 @@
 import { Auth } from "../../components/forms/auth/auth";
-import { BackgroundText, BlurredContainer } from "./StylesRegistration";
+import { BackgroundText, BlurredContainer } from "../styles/StylesRegistration";
 import { Box } from "@mui/material";
 import { AuthNav } from "components/navigation/authNav";
 import useSnackbar from "hooks/notifications/useSnackbar";

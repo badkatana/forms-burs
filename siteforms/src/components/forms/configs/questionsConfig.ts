@@ -89,7 +89,7 @@ export const questionsGirlFields: IFormFields[] = [
     ],
   },
   {
-    name: "uploadUserFile",
+    name: "image",
     label: "upload your photo",
     type: "upload",
     validation: { required: TEXT_REQUIRED },

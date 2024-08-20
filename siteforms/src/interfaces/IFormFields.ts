@@ -1,5 +1,3 @@
-import { UseFormSetValue, FieldValues } from "react-hook-form";
-
 export interface IFormFields {
   name: string;
   label: string;
@@ -25,5 +23,5 @@ export interface ValidationRules {
 
 export interface IAnswersQuestionnaire {
   phoneNumber: string;
-  answers: any;
+  answers: { [key: string]: any };
 }
