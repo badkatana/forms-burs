@@ -11,7 +11,7 @@ export const createUser = async (user: IUser) => {
   return data;
 };
 
-// FIXME: bad practice for passwords
+// FIXME: bad practice for passwords should use tokens (different branch)
 
 export const signInUser = async (userPass: string, userPhone: string) => {
   const params = new URLSearchParams();

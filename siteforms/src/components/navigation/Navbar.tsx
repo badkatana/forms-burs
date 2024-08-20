@@ -6,7 +6,7 @@ import { useCheckUser } from "hooks/user/useCheckUser";
 export const NavBar = () => {
   const { getUserInfo, logOutUser } = useCheckUser();
   const userName = getUserInfo().name;
-  // FIXME: more information in navbar (user name, logout)
+
   return (
     <StyledAppBar color="transparent" position="sticky">
       <Toolbar style={{ width: "100%", justifyContent: "space-between" }}>

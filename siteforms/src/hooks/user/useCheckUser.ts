@@ -4,7 +4,7 @@ import { getUsersStatistics } from "http/userAPI";
 import { IUser } from "interfaces/IUser";
 
 // this hook provides information for LOGGED user and statistics
-// FIXME: split in another hooks
+// FIXME: split in another hooks (like one for statistics, one for local storage)
 
 export const useCheckUser = () => {
   const isUserLoggedIn = () => {

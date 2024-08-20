@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { createUser, signInUser } from "http/userAPI";
 import { IUser } from "interfaces/IUser";
 
-// fixme: it should be two different hooks
+// fixme: it should be two different hooks (register and login???)
 
 export const useRegisterUser = () => {
   const doOnSuccess = (data: IUser) => {
