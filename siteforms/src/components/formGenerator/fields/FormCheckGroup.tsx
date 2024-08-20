@@ -8,30 +8,30 @@ import { IFormFields } from "interfaces/IFormFields";
 export const FormCheckboxGroup = (props: IFormFields) => {
   const { name, options, label, validation } = props;
   const { control } = useFormContext();
-  return (
-    <Controller
-      control={control}
-      name={name}
-      rules={validation}
-      render={({ field: { onChange, value }, fieldState }) => (
-        <div>
-          {/* {field.options?.map((check) => (
-            <FormCheckbox control={control} field={undefined} />
-          ))} */}
 
-          {/* <Radio value={value} onChange={onChange}>
-            {props.field.options?.map((option) => (
-              <FormControlLabel
-                key={option.value}
-                value={option.value}
-                control={<Radio />}
-                label={option.label}
-              />
+  const getACheckBox = (check: { label: string; value: string }) => {
+    return {
+      name: check.label,
+      label: check.value,
+      type: "checkbox",
+    } as IFormFields;
+  };
+  return (
+    <div>
+      <div>{label}</div>
+      <Controller
+        control={control}
+        name={name}
+        rules={validation}
+        render={({ field: { onChange, value }, fieldState }) => (
+          <div>
+            {options?.map((check) => (
+              <FormCheckbox {...getACheckBox(check)} />
             ))}
-          </>
-          {fieldState.error ? fieldState.error.message : ""} */}
-        </div>
-      )}
-    />
+            {fieldState.error ? fieldState.error.message : ""}
+          </div>
+        )}
+      />
+    </div>
   );
 };

@@ -94,4 +94,16 @@ export const questionsGirlFields: IFormFields[] = [
     type: "upload",
     validation: { required: TEXT_REQUIRED },
   },
+  {
+    name: "image",
+    label: "Check if you like",
+    type: "checkbox group",
+    validation: { required: TEXT_REQUIRED },
+    options: [
+      { label: "singing", value: "singing" },
+      { label: "gaming", value: "gaming" },
+      { label: "reading", value: "reading" },
+      { label: "walking", value: "walking" },
+    ],
+  },
 ];

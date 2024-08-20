@@ -11,6 +11,7 @@ import { IButtonProps } from "interfaces/iButtonGroup";
 import { FormSwitch } from "./fields/FormSwitch";
 import { FormOrder } from "./fields/FormOrder";
 import { FormUpload } from "./fields/FormUpload";
+import { FormCheckboxGroup } from "./fields/FormCheckGroup";
 
 type FormGeneratorProps = {
   submitFunction: (data: any) => void; // здесь any, потому как генератор форм должен быть максимально абстрактным
@@ -57,6 +58,8 @@ export const FormGenerator = (props: FormGeneratorProps) => {
 
             case "upload":
               return <FormUpload key={field.name} {...field} />;
+            case "checkbox group":
+              return <FormCheckboxGroup key={field.name} {...field} />;
 
             default:
               return null;
