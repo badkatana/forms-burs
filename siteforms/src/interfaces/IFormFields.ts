@@ -23,12 +23,6 @@ export interface ValidationRules {
   pattern?: { value: RegExp; message: string };
 }
 
-export type FormFieldProps = {
-  field: IFormFields;
-  control: any;
-  setValue?: UseFormSetValue<FieldValues>;
-};
-
 export interface IAnswersQuestionnaire {
   phoneNumber: string;
   answers: any;

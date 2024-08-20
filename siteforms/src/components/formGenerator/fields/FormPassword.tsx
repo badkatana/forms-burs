@@ -1,22 +1,24 @@
 import { InputAdornment, IconButton, TextField } from "@mui/material";
-import { Controller } from "react-hook-form";
-import { FormFieldProps } from "interfaces/IFormFields";
+import { Controller, useFormContext } from "react-hook-form";
+import { IFormFields } from "interfaces/IFormFields";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { useState } from "react";
 
-export const FormPassword = (props: FormFieldProps) => {
+export const FormPassword = (props: IFormFields) => {
   const [showPassword, setShowPassword] = useState(false);
+  const { control } = useFormContext();
+  const { name, label, validation } = props;
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
     <Controller
-      name={props.field.name}
-      control={props.control}
-      rules={props.field.validation}
+      name={name}
+      control={control}
+      rules={validation}
       render={({ field: { onChange, value }, fieldState }) => (
         <TextField
-          label={props.field.label}
+          label={label}
           onChange={onChange}
           value={value}
           type={showPassword ? "text" : "password"}

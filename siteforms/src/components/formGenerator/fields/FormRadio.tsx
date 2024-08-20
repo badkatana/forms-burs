@@ -1,19 +1,21 @@
 import { FormControlLabel, RadioGroup, Radio } from "@mui/material";
-import { Controller } from "react-hook-form";
-import { FormFieldProps } from "interfaces/IFormFields";
+import { Controller, useFormContext } from "react-hook-form";
+import { IFormFields } from "interfaces/IFormFields";
 
-export const FormRadio = (props: FormFieldProps) => {
+export const FormRadio = (props: IFormFields) => {
+  const { control } = useFormContext();
+  const { options, name, label, validation } = props;
   return (
     <div>
-      <span>{props.field.label}</span>
+      <span>{label}</span>
       <Controller
-        name={props.field.name}
-        control={props.control}
-        rules={props.field.validation}
+        name={name}
+        control={control}
+        rules={validation}
         render={({ field: { onChange, value }, fieldState }) => (
           <div>
             <RadioGroup value={value} onChange={onChange}>
-              {props.field.options?.map((option) => (
+              {options?.map((option) => (
                 <FormControlLabel
                   key={option.value}
                   value={option.value}

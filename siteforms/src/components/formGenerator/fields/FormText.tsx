@@ -1,23 +1,25 @@
-import { Controller } from "react-hook-form";
-import { FormFieldProps } from "interfaces/IFormFields";
+import { Controller, useFormContext } from "react-hook-form";
+import { IFormFields } from "interfaces/IFormFields";
 import { TextField } from "@mui/material";
-import { setFormValue } from "./lib/formLogic";
 
-export const FormText = (props: FormFieldProps) => {
+export const FormText = (props: IFormFields) => {
+  const { control, setValue } = useFormContext();
+  const { options, name, label, validation } = props;
+
   return (
     <div>
-      <div>{props.field.label}</div>
+      <div>{label}</div>
       <Controller
-        name={props.field.name}
-        control={props.control}
-        rules={props.field.validation}
-        render={({ field: { onChange, onBlur, value }, fieldState }) => (
+        name={name}
+        control={control}
+        rules={validation}
+        render={({ field: { onChange, value }, fieldState }) => (
           <TextField
-            label={props.field.label}
+            label={label}
             type="text"
             onChange={(e) => {
               onChange(e);
-              setFormValue(props.setValue!, e, props.field.name);
+              setValue(name, e.target.value);
             }}
             value={value !== undefined ? value : ""}
             error={!!fieldState.error}

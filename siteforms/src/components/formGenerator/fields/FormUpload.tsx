@@ -1,20 +1,21 @@
 import { Button } from "@mui/material";
-import { FormFieldProps } from "interfaces/IFormFields";
-import { Controller } from "react-hook-form";
+import { IFormFields } from "interfaces/IFormFields";
+import { Controller, useFormContext } from "react-hook-form";
 import { HiddenInput } from "./styles/FormUploadStyle";
 
-export const FormUpload = (props: FormFieldProps) => {
-  const { field, control } = props;
+export const FormUpload = (props: IFormFields) => {
+  const { control } = useFormContext();
+  const { name, label, validation } = props;
   return (
     <Controller
-      name={field.name}
+      name={name}
       control={control}
-      rules={field.validation}
+      rules={validation}
       render={({ field: { onChange }, fieldState }) => (
         <div>
           <Button component="label">
             {/* important */}
-            {field.label}
+            {label}
             <HiddenInput
               type="file"
               accept="image/*"

@@ -1,17 +1,20 @@
-import { Controller } from "react-hook-form";
-import { FormFieldProps } from "interfaces/IFormFields";
+import { Controller, useFormContext } from "react-hook-form";
+import { IFormFields } from "interfaces/IFormFields";
 import { Switch } from "@mui/material";
 
-export const FormSwitch = (props: FormFieldProps) => {
+export const FormSwitch = (props: IFormFields) => {
+  const { control } = useFormContext();
+  const { name, label } = props;
+
   return (
     <div>
-      <div>{props.field.label}</div>
+      <div>{label}</div>
       <Controller
-        name={props.field.name}
-        control={props.control}
+        name={name}
+        control={control}
         render={({ field: { onChange, value } }) => (
           <Switch
-            aria-label={props.field.name}
+            aria-label={name}
             color="secondary"
             checked={value}
             onChange={onChange}

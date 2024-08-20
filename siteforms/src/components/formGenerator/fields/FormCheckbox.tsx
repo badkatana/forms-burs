@@ -1,12 +1,15 @@
 import { FormControlLabel, Checkbox } from "@mui/material";
-import { Controller } from "react-hook-form";
-import { FormFieldProps } from "interfaces/IFormFields";
+import { IFormFields } from "interfaces/IFormFields";
+import { Controller, useFormContext } from "react-hook-form";
 
-export const FormCheckbox = (props: FormFieldProps) => {
+export const FormCheckbox = (props: IFormFields) => {
+  const { name, label, validation } = props;
+  const { control } = useFormContext();
   return (
     <Controller
-      name={props.field.name}
-      control={props.control}
+      name={name}
+      control={control}
+      rules={validation}
       render={({ field: { onChange, value } }) => (
         <FormControlLabel
           control={
@@ -15,7 +18,7 @@ export const FormCheckbox = (props: FormFieldProps) => {
               onChange={(e) => onChange(e.target.checked)}
             />
           }
-          label={props.field.label}
+          label={label}
         />
       )}
     />
