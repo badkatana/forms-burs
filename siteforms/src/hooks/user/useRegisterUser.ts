@@ -12,7 +12,7 @@ export const useRegisterUser = () => {
   const {
     mutate: createNewUser,
     error: registrationError,
-    isSuccess: registrationSuccess,
+    isSuccess: isRegistrationSuccess,
   } = useMutation({
     mutationFn: (newUser: IUser) => createUser(newUser),
     onSuccess: (data) => {
@@ -26,7 +26,7 @@ export const useRegisterUser = () => {
   const {
     mutate: login,
     error: signInError,
-    isSuccess: loginSuccess,
+    isSuccess: isLoginSuccess,
   } = useMutation({
     mutationFn: (data: { userPass: string; userPhone: string }) =>
       signInUser(data.userPass, data.userPhone),
@@ -57,7 +57,7 @@ export const useRegisterUser = () => {
     handleSignIn,
     registrationError,
     signInError,
-    registrationSuccess,
-    loginSuccess,
+    isRegistrationSuccess,
+    isLoginSuccess,
   };
 };

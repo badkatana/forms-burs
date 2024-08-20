@@ -8,13 +8,12 @@ import { useNavigate } from "react-router-dom";
 export const Auth = (props: {
   handleRegistrationError: (error: any) => void;
 }) => {
-  const { handleSubmit, registrationError, registrationSuccess } =
+  const { handleSubmit, registrationError, isRegistrationSuccess } =
     useRegisterUser();
   const { isUserLoggedIn } = useCheckUser();
   const navigate = useNavigate();
 
-  if (registrationSuccess) {
-    window.location.reload();
+  if (isRegistrationSuccess) {
     navigate("/news");
   }
   if (registrationError !== null) {
