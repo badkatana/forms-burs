@@ -18,3 +18,11 @@ export const StyledButton = styled(Button)({
   color: "#783b38",
   border: "1px solid #783b38",
 });
+
+export const StatContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  marginTop: "1em",
+});

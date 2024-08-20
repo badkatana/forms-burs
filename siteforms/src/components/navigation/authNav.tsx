@@ -12,7 +12,7 @@ export const AuthNav = (props: AuthNavProps) => {
   const { title, linkNeeded, linkText } = props;
 
   return (
-    <FlexBox direction>
+    <FlexBox>
       <div>{title}</div>
       <NavLink to={linkNeeded}>{linkText}</NavLink>
     </FlexBox>

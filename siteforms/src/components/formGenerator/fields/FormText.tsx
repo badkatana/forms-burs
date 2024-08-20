@@ -15,7 +15,6 @@ export const FormText = (props: IFormFields) => {
         rules={validation}
         render={({ field: { onChange, value }, fieldState }) => (
           <TextField
-            label={label}
             type="text"
             onChange={(e) => {
               onChange(e);

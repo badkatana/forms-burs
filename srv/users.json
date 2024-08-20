@@ -34,5 +34,17 @@
         "password": "%1simple",
         "gender": "male",
         "phoneNumber": "66666666666"
+    },
+    {
+        "name": "Haylo Mirru",
+        "password": "%1simple",
+        "gender": "female",
+        "phoneNumber": "77777777777"
+    },
+    {
+        "name": "Maria Kandinsky",
+        "password": "%1simple",
+        "gender": "male",
+        "phoneNumber": "99999999999"
     }
 ]

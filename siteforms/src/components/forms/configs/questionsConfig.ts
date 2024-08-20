@@ -95,7 +95,7 @@ export const questionsGirlFields: IFormFields[] = [
     validation: { required: TEXT_REQUIRED },
   },
   {
-    name: "image",
+    name: "groupcheck",
     label: "Check if you like",
     type: "checkbox group",
     validation: { required: TEXT_REQUIRED },

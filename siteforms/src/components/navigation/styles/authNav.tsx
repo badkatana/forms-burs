@@ -1,11 +1,8 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
 
-export const FlexBox = styled(Box)<{ direction?: boolean }>(
-  ({ direction }) => ({
-    display: "flex",
-    flexDirection: direction ? "row" : "column",
-    justifyContent: "center",
-    alignItems: "center",
-  })
-);
+export const FlexBox = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});

@@ -12,31 +12,33 @@ export const FormPassword = (props: IFormFields) => {
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
-    <Controller
-      name={name}
-      control={control}
-      rules={validation}
-      render={({ field: { onChange, value }, fieldState }) => (
-        <TextField
-          label={label}
-          onChange={onChange}
-          value={value}
-          type={showPassword ? "text" : "password"}
-          error={!!fieldState.error}
-          helperText={fieldState.error ? fieldState.error.message : ""}
-          fullWidth
-          margin="normal"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={handleClickShowPassword} edge="end">
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      )}
-    />
+    <div>
+      <div>{label}</div>
+      <Controller
+        name={name}
+        control={control}
+        rules={validation}
+        render={({ field: { onChange, value }, fieldState }) => (
+          <TextField
+            onChange={onChange}
+            value={value}
+            type={showPassword ? "text" : "password"}
+            error={!!fieldState.error}
+            helperText={fieldState.error ? fieldState.error.message : ""}
+            fullWidth
+            margin="normal"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleClickShowPassword} edge="end">
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+        )}
+      />
+    </div>
   );
 };

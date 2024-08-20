@@ -12,9 +12,7 @@ export const SingInPage = () => {
     <Box>
       <BackgroundText>
         <BlurredContainer>
-          <FormControl>
-            <SignIn handleError={handleAuthError} />
-          </FormControl>
+          <SignIn handleError={handleAuthError} />
           <AuthNav
             linkNeeded="/registration"
             linkText="Create!"

@@ -28,7 +28,7 @@ export const Questionnaire = () => {
     saveUserImages(formData);
   };
 
-  if (isUserAnswered) {
+  if (isUserAnswered && isUserAnswered.exists) {
     return <div>You already done that</div>;
   }
 
